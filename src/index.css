@@ -1,0 +1,336 @@
+/* ─────────────────────────────────────────────────
+   ResolveOPS — Design Tokens & Global Styles
+   Informed by Taste Skill + VibeCurb principles
+   ───────────────────────────────────────────────── */
+
+/* ── Google Fonts: Outfit (display) + Inter (body) ── */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ── CSS Custom Properties ───────────────────────── */
+:root {
+  /* Palette — Dark studio theme */
+  --bg-primary: #0B1014;
+  --bg-raised: #141C22;
+  --bg-elevated: #1A242C;
+  --bg-card: #151E26;
+  --bg-card-hover: #1C2830;
+
+  /* Text */
+  --text-primary: #F4F3EE;
+  --text-secondary: #A6B1B8;
+  --text-muted: #6B7A84;
+  --text-accent: #B9E8D1;
+
+  /* Accent */
+  --accent: #B9E8D1;
+  --accent-hover: #98D4B7;
+  --accent-dim: rgba(185, 232, 209, 0.08);
+  --accent-glow: rgba(185, 232, 209, 0.15);
+
+  /* Borders */
+  --border-subtle: rgba(166, 177, 184, 0.1);
+  --border-medium: rgba(166, 177, 184, 0.18);
+  --border-strong: rgba(166, 177, 184, 0.3);
+
+  /* Typography — Outfit for display, Inter for body */
+  --font-display: 'Outfit', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Type Scale — responsive, no fixed px */
+  --text-xs: clamp(0.6875rem, 0.625rem + 0.2vw, 0.75rem);
+  --text-sm: clamp(0.8125rem, 0.75rem + 0.2vw, 0.875rem);
+  --text-base: clamp(0.9375rem, 0.875rem + 0.2vw, 1rem);
+  --text-lg: clamp(1.0625rem, 1rem + 0.2vw, 1.125rem);
+  --text-xl: clamp(1.1875rem, 1rem + 0.5vw, 1.375rem);
+  --text-2xl: clamp(1.375rem, 1.125rem + 0.75vw, 1.75rem);
+  --text-3xl: clamp(1.75rem, 1.375rem + 1.25vw, 2.25rem);
+  --text-4xl: clamp(2.25rem, 1.75rem + 1.75vw, 3rem);
+  --text-5xl: clamp(2.75rem, 2rem + 2.5vw, 4rem);
+  --text-6xl: clamp(3.25rem, 2.25rem + 3.5vw, 5.5rem);
+  --text-hero: clamp(3rem, 2rem + 4vw, 6rem);
+
+  /* Spacing scale — consistent container */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+  --space-5xl: 8rem;
+  --space-section: clamp(5rem, 4rem + 4vw, 8rem);
+
+  /* Container */
+  --container-max: 1320px;
+  --container-padding: clamp(1.25rem, 1rem + 1.5vw, 3rem);
+
+  /* Corner radii — consistent soft */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-pill: 9999px;
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Spring physics — VibeCurb-inspired */
+  --spring-snappy: linear(
+    0, 0.009, 0.035 2.1%, 0.141 4.4%, 0.723 12.9%,
+    0.938 16.7%, 1.017 19.4%, 1.067 22.5%, 1.089 26.0%,
+    1.079 30.3%, 1.049 36.0%, 1.024 42.6%, 1.011 50.3%,
+    1.004 59.2%, 1.001 69.3%, 1
+  );
+  --spring-smooth: linear(
+    0, 0.004, 0.016 2.3%, 0.063 4.7%, 0.141 7.2%,
+    0.25 9.9%, 0.601 16.5%, 0.815 21.0%, 0.929 25.2%,
+    0.987 29.0%, 1.025 33.5%, 1.042 38.0%, 1.04 43.5%,
+    1.027 50.0%, 1.013 57.5%, 1.005 67.0%, 1.001 79.0%, 1
+  );
+  --duration-snappy: 0.55s;
+  --duration-smooth: 0.7s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.35s;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.5);
+  --shadow-accent: 0 4px 24px rgba(185, 232, 209, 0.12);
+
+  /* Nav */
+  --nav-height: 72px;
+}
+
+/* ── Reset & Base ─────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.65;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+/* ── Typography Base ──────────────────────────────── */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+h1 { font-size: var(--text-hero); font-weight: 700; }
+h2 { font-size: var(--text-5xl); }
+h3 { font-size: var(--text-3xl); }
+h4 { font-size: var(--text-2xl); }
+
+p {
+  color: var(--text-secondary);
+  max-width: 65ch;
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ── Container ─────────────────────────────────────── */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+/* ── Buttons ───────────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-pill);
+  transition: all var(--duration-snappy) var(--spring-snappy);
+  white-space: nowrap;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: var(--bg-primary);
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  box-shadow: var(--shadow-accent);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-medium);
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background-color: var(--accent-dim);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  padding: 0.5rem 0;
+}
+
+.btn-ghost:hover {
+  color: var(--accent);
+}
+
+/* ── Focus Styles ──────────────────────────────────── */
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Section Spacing ───────────────────────────────── */
+
+.section {
+  padding-top: var(--space-section);
+  padding-bottom: var(--space-section);
+}
+
+/* ── Dividers ──────────────────────────────────────── */
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border-subtle);
+  border: none;
+}
+
+/* ── Selection ─────────────────────────────────────── */
+
+::selection {
+  background-color: var(--accent);
+  color: var(--bg-primary);
+}
+
+/* ── Scrollbar ─────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-strong);
+}
+
+/* ── Reduced Motion ────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Utility Classes ───────────────────────────────── */
+
+.text-accent { color: var(--accent); }
+.text-muted { color: var(--text-muted); }
+.text-secondary { color: var(--text-secondary); }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ── Mobile Menu Overlay ────────────────────────────── */
+
+body.menu-open {
+  overflow: hidden;
+}
