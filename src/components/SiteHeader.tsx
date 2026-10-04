@@ -43,10 +43,23 @@ export default function SiteHeader() {
 
   return (
     <header className={`site-header ${scrolled ? 'scrolled' : ''}`}>
-      <div className="header-inner container">
-        <Link to="/" className="header-logo" aria-label="ResolveOPS Home">
-          <span className="logo-name">{brand.name}</span>
-          <span className="logo-subtitle">{brand.subtitle}</span>
+      <div className="header-inner">
+        <Link
+          to="/"
+          className="header-logo"
+          aria-label="ResolveOPS Home"
+          onClick={(e) => {
+            if (location.pathname === '/') {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          }}
+        >
+          <img src="/assets/logo.png" alt="ResolveOPS Logo" className="header-logo-icon" />
+          <div className="header-logo-text">
+            <span className="logo-name">{brand.name}</span>
+            <span className="logo-subtitle">{brand.subtitle}</span>
+          </div>
         </Link>
 
         <nav className="header-nav" aria-label="Main navigation">

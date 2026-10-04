@@ -1,0 +1,117 @@
+/* ── Upgraded Mouse Pointer (Dot + Ring Style) ──────────── */
+
+/* Center dot: solid 7px circle sticking exactly to mouse */
+.cursor-dot-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 10000;
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: opacity 0.2s ease-out;
+}
+
+.cursor-dot {
+  width: 7px;
+  height: 7px;
+  margin-left: -3.5px;
+  margin-top: -3.5px;
+  border-radius: 50%;
+  background-color: var(--accent); /* Exact mint-teal green #36E0D0 */
+  /* Vivid multi-layer neon glow: tight bright core + soft wider bloom */
+  box-shadow:
+    0 0 4px  2px rgba(var(--accent-rgb), 1),
+    0 0 10px 4px rgba(var(--accent-rgb), 0.75),
+    0 0 20px 6px rgba(var(--accent-rgb), 0.4);
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  transform: scale(1);
+  will-change: transform;
+}
+
+/* Hover on buttons and links: dot shrinks slightly */
+.cursor-dot-wrapper.hovered .cursor-dot {
+  transform: scale(0.75);
+}
+
+/* Ring: crisp 1.5px circle (~60px) with stronger teal glow */
+.cursor-ring-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: opacity 0.2s ease-out;
+}
+
+.cursor-ring {
+  width: 60px;
+  height: 60px;
+  margin-left: -30px;
+  margin-top: -30px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(var(--accent-rgb), 0.72);
+  background-color: rgba(var(--accent-rgb), 0.05);
+  /* Strong inner glow + bright outer ring glow + soft wide bloom */
+  box-shadow:
+    0 0 8px  3px  rgba(var(--accent-rgb), 0.55),
+    0 0 20px 6px  rgba(var(--accent-rgb), 0.28),
+    0 0 40px 12px rgba(var(--accent-rgb), 0.1),
+    inset 0 0 10px 2px rgba(var(--accent-rgb), 0.18);
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 200ms ease,
+              background-color 200ms ease,
+              box-shadow 200ms ease;
+  transform: scale(1);
+  will-change: transform;
+}
+
+/* Hover on buttons and links: ring grows to ~1.4x */
+.cursor-ring-wrapper.hovered .cursor-ring {
+  transform: scale(1.4);
+  border-color: rgba(var(--accent-rgb), 0.9);
+  background-color: rgba(var(--accent-rgb), 0.1);
+  box-shadow:
+    0 0 10px 4px  rgba(var(--accent-rgb), 0.7),
+    0 0 28px 8px  rgba(var(--accent-rgb), 0.38),
+    0 0 52px 16px rgba(var(--accent-rgb), 0.15),
+    inset 0 0 14px 3px rgba(var(--accent-rgb), 0.25);
+}
+
+/* Stronger ambient background glow with screen blend mode */
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 420px;
+  height: 420px;
+  margin-left: -210px;
+  margin-top: -210px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(var(--accent-rgb), 0.14) 0%,
+    rgba(var(--accent-rgb), 0.06) 35%,
+    rgba(var(--accent-rgb), 0.02) 60%,
+    rgba(var(--accent-rgb), 0)    80%
+  );
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: opacity 0.3s ease-out;
+  filter: blur(12px);
+  mix-blend-mode: screen;
+}
+
+/* ── Hidden on Touch & Reduced Motion ───────────────── */
+
+@media (pointer: coarse), (hover: none), (prefers-reduced-motion: reduce) {
+  .cursor-dot-wrapper,
+  .cursor-ring-wrapper,
+  .cursor-glow {
+    display: none !important;
+  }
+}

@@ -1,0 +1,11 @@
+/* ── NetworkCanvas ─────────────────────────────────── */
+
+.network-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none; /* let all clicks pass through to page content */
+  z-index: 0;
+}

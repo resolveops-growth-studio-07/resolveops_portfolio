@@ -45,7 +45,8 @@ export const brand = {
     'Websites, design, automation, and analytics that help businesses get found, earn trust, and grow.',
   footerDescription:
     'We bring design, development, marketing, automation, and analytics together — built around your business goals.',
-  ctaHeading: "Let's build your next stage of growth.",
+  ctaEyebrow: 'HAVE A PROJECT IN MIND?',
+  ctaHeading: "Let's build something that helps your business grow.",
   contactHeading: "Tell us what you're building.",
   contactSubtext:
     "Describe your business and the project you have in mind. We'll get back to you to discuss how we can help.",

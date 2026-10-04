@@ -1,97 +1,178 @@
-import { useRef, useState, useEffect, useCallback } from 'react';
+import { useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowLeft, CaretRight } from '@phosphor-icons/react';
+import { ArrowRight, CaretRight } from '@phosphor-icons/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
 import { services } from '../data/content';
 import ServiceVisual from './ServiceVisual';
 import './ServiceCardStage.css';
 
-export default function ServiceCardStage() {
-  const stageRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-  const totalCards = services.length;
+/*
+  ═══════════════════════════════════════════════════════════════
+  ServiceCardStage — GSAP ScrollTrigger-driven two-card layout
 
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+  Architecture:
+    The section is pinned by ScrollTrigger while the user scrolls.
+    A horizontal `.cards-track` holds all 6 cards in a flex row.
+    GSAP tweens the track's x position based on scroll progress.
+    Two cards are visible at any time through the clipping viewport.
+
+  Scroll math:
+    6 cards → 5 visible pairs → 4 transitions between them.
+    Each transition consumes ~600px of scroll → end: "+=2400".
+    progress 0 → 1 maps to pair 01+02 → pair 05+06.
+  ═══════════════════════════════════════════════════════════════
+*/
+
+// Register GSAP plugins (idempotent — safe to call multiple times)
+gsap.registerPlugin(ScrollTrigger);
+
+const TOTAL    = services.length;  // 6
+const PAIRS    = TOTAL - 1;        // 5  (01+02, 02+03, …, 05+06)
+const STEPS    = PAIRS - 1;        // 4 transitions
+const GAP      = 32;               // px gap between cards (matches CSS)
+const SCROLL_PER_STEP = 600;       // px of scroll per card transition
+
+function clamp(v: number, lo: number, hi: number) {
+  return Math.max(lo, Math.min(hi, v));
+}
+
+export default function ServiceCardStage() {
+  // ── Refs ────────────────────────────────────────────────────
+  const sectionRef  = useRef<HTMLElement>(null);
+  const trackRef    = useRef<HTMLDivElement>(null);
+  const cardRefs    = useRef<(HTMLDivElement | null)[]>([]);
+  const progressRef = useRef<HTMLDivElement>(null);
+  const counterRef  = useRef<HTMLSpanElement>(null);
+
+  // ── Update active/secondary classes + progress bar ─────────
+  const lastPair = useRef(-1);
+
+  const updateUI = useCallback((progress: number) => {
+    // progress: 0 → 1 over the entire scroll range
+    // Map to pair index: 0..STEPS
+    const pairProg = progress * STEPS;
+    const pairIdx  = clamp(Math.round(pairProg), 0, STEPS);
+
+    // Progress bar (direct DOM, no React re-render)
+    if (progressRef.current) {
+      progressRef.current.style.width = `${(progress * 100).toFixed(1)}%`;
+    }
+
+    // Counter (only on pair change)
+    if (pairIdx !== lastPair.current) {
+      lastPair.current = pairIdx;
+      if (counterRef.current) {
+        counterRef.current.textContent = String(pairIdx + 1).padStart(2, '0');
+      }
+    }
+
+    // Active / secondary class toggle on cards
+    cardRefs.current.forEach((card, i) => {
+      if (!card) return;
+      // The left-slot card index at this progress
+      const leftIdx  = pairIdx;
+      const rightIdx = pairIdx + 1;
+
+      const isActive    = i === leftIdx;
+      const isSecondary = i === rightIdx;
+
+      card.classList.toggle('is-active', isActive);
+      card.classList.toggle('is-secondary', isSecondary);
+    });
   }, []);
 
-  const goTo = useCallback((index: number) => {
-    setActiveIndex(Math.max(0, Math.min(index, totalCards - 1)));
-  }, [totalCards]);
+  // ── GSAP ScrollTrigger setup ────────────────────────────────
+  useGSAP(() => {
+    const section = sectionRef.current;
+    const track   = trackRef.current;
+    if (!section || !track) return;
 
-  const next = useCallback(() => goTo(activeIndex + 1), [activeIndex, goTo]);
-  const prev = useCallback(() => goTo(activeIndex - 1), [activeIndex, goTo]);
+    // Respect reduced-motion preference
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+    if (prefersReducedMotion) return;
 
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (!stageRef.current?.contains(document.activeElement) &&
-          document.activeElement !== stageRef.current) return;
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-        e.preventDefault();
-        next();
-      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-        e.preventDefault();
-        prev();
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [next, prev]);
+    // Calculate how far the track needs to move:
+    // Each step moves the track left by one card width + gap.
+    // Card width = calc(50% - 16px) → we compute it from the first card.
+    const firstCard = cardRefs.current[0];
+    if (!firstCard) return;
+    const cardW = firstCard.offsetWidth;
+    const stride = cardW + GAP;
+    const totalShift = stride * STEPS; // pixels to move left
 
-  // Scroll-driven progression on desktop
-  useEffect(() => {
-    if (isMobile) return;
+    // Create the animation
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        pin: true,                         // pin the section
+        scrub: 0.6,                        // smooth 0.6s catch-up
+        start: 'top top',                  // pin starts when top hits viewport top
+        end: `+=${SCROLL_PER_STEP * STEPS}`,  // total scroll distance
+        anticipatePin: 1,                  // smooths the pin start
+        invalidateOnRefresh: true,         // recalc on resize
+        onUpdate: (self) => {
+          updateUI(self.progress);
+        },
+      },
+    });
 
-    const stage = stageRef.current;
-    if (!stage) return;
+    // Tween the track's x position from 0 to -totalShift
+    tl.to(track, {
+      x: -totalShift,
+      ease: 'none',           // linear — scroll position = animation position
+      duration: 1,            // normalized; scrub handles actual timing
+    });
 
-    let ticking = false;
-    const handleScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        const rect = stage.getBoundingClientRect();
-        const stageHeight = rect.height;
-        const viewportHeight = window.innerHeight;
-        
-        // Calculate scroll progress through the stage
-        const scrollProgress = (-rect.top) / (stageHeight - viewportHeight);
-        const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
-        const newIndex = Math.round(clampedProgress * (totalCards - 1));
-        
-        setActiveIndex(prev => {
-          if (prev !== newIndex) return newIndex;
-          return prev;
-        });
-        ticking = false;
-      });
-    };
+    // Initial UI state
+    updateUI(0);
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [isMobile, totalCards]);
+    // Cleanup is handled automatically by useGSAP
+  }, {
+    scope: sectionRef,          // scopes gsap selectors to this element
+    dependencies: [],           // run once on mount
+  });
 
-  if (isMobile) {
-    return (
-      <section className="service-stage-section section" aria-label="Our services">
-        <div className="container">
-          <div className="stage-header">
-            <h2 className="stage-title">What we do</h2>
-            <Link to="/services" className="btn btn-ghost stage-view-all">
-              View all services <CaretRight size={14} weight="bold" />
-            </Link>
-          </div>
-          <div className="mobile-cards">
+  // ── Render ──────────────────────────────────────────────────
+  return (
+    <section
+      ref={sectionRef}
+      className="service-stage"
+      aria-label="Our services"
+    >
+      <div className="container stage-inner">
+
+        {/* Header */}
+        <div className="stage-header">
+          <h2 className="stage-title">What we do</h2>
+          <Link to="/services" className="btn btn-ghost stage-view-all">
+            View all services <CaretRight size={14} weight="bold" />
+          </Link>
+        </div>
+
+        {/* Card viewport — clips the track as it slides */}
+        <div className="stage-viewport">
+          {/*
+            Cards track — a flex row of all 6 cards.
+            GSAP translates this container horizontally.
+            Width = 6 × cardWidth + 5 × gap.
+          */}
+          <div ref={trackRef} className="cards-track">
             {services.map((service, i) => (
-              <div key={service.id} className="mobile-service-card">
-                <div className="mobile-card-visual">
-                  <ServiceVisual serviceId={service.id} size="small" />
+              <div
+                key={service.id}
+                ref={(el) => { cardRefs.current[i] = el; }}
+                className={`stage-card${i === 0 ? ' is-active' : i === 1 ? ' is-secondary' : ''}`}
+                role="group"
+                aria-label={`Service ${service.number}: ${service.title}`}
+              >
+                <div className="card-visual-wrapper">
+                  <ServiceVisual serviceId={service.id} size="large" />
                 </div>
-                <div className="mobile-card-content">
+                <div className="card-content">
                   <span className="card-number">{service.number}</span>
                   <h3 className="card-title">{service.title}</h3>
                   <p className="card-description">{service.shortDescription}</p>
@@ -102,7 +183,8 @@ export default function ServiceCardStage() {
                   </div>
                   <Link
                     to={`/services#${service.id}`}
-                    className="btn btn-ghost card-cta"
+                    className="btn btn-secondary card-cta"
+                    tabIndex={0}
                   >
                     Explore service <ArrowRight size={14} weight="bold" />
                   </Link>
@@ -111,115 +193,24 @@ export default function ServiceCardStage() {
             ))}
           </div>
         </div>
-      </section>
-    );
-  }
 
-  return (
-    <section
-      ref={stageRef}
-      className="service-stage-section"
-      aria-label="Our services"
-      tabIndex={0}
-      style={{ height: `${totalCards * 100}vh` }}
-    >
-      <div className="stage-sticky">
-        <div className="container">
-          <div className="stage-header">
-            <h2 className="stage-title">What we do</h2>
-            <Link to="/services" className="btn btn-ghost stage-view-all">
-              View all services <CaretRight size={14} weight="bold" />
-            </Link>
+        {/* Controls row */}
+        <div className="stage-controls">
+          <div className="stage-counter">
+            <span ref={counterRef} className="counter-current">01</span>
+            <span className="counter-separator">/</span>
+            <span className="counter-total">{String(TOTAL).padStart(2, '0')}</span>
           </div>
 
-          <div className="stage-viewport">
-            <div className="cards-container">
-              {services.map((service, i) => {
-                const offset = i - activeIndex;
-                const isActive = offset === 0;
-                const absOffset = Math.abs(offset);
-                
-                // Card transforms for the arc effect
-                const rotateY = offset * 25;
-                const translateX = offset * 320;
-                const translateZ = -absOffset * 200;
-                const scale = isActive ? 1 : Math.max(0.7, 1 - absOffset * 0.15);
-                const opacity = absOffset > 2 ? 0 : isActive ? 1 : 0.4;
-
-                return (
-                  <div
-                    key={service.id}
-                    className={`stage-card ${isActive ? 'active' : ''}`}
-                    style={{
-                      transform: `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`,
-                      opacity,
-                      zIndex: totalCards - absOffset,
-                      pointerEvents: isActive ? 'auto' : 'none',
-                    }}
-                    aria-hidden={!isActive}
-                    role="group"
-                    aria-label={`Service ${service.number}: ${service.title}`}
-                  >
-                    <div className="card-visual-wrapper">
-                      <ServiceVisual serviceId={service.id} size="large" />
-                    </div>
-                    <div className="card-content">
-                      <span className="card-number">{service.number}</span>
-                      <h3 className="card-title">{service.title}</h3>
-                      <p className="card-description">{service.shortDescription}</p>
-                      <div className="card-capabilities">
-                        {service.capabilities.map((cap) => (
-                          <span key={cap} className="capability-tag">{cap}</span>
-                        ))}
-                      </div>
-                      <Link
-                        to={`/services#${service.id}`}
-                        className="btn btn-secondary card-cta"
-                        tabIndex={isActive ? 0 : -1}
-                      >
-                        Explore service <ArrowRight size={14} weight="bold" />
-                      </Link>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="stage-controls">
-            <div className="stage-counter">
-              <span className="counter-current">{String(activeIndex + 1).padStart(2, '0')}</span>
-              <span className="counter-separator">/</span>
-              <span className="counter-total">{String(totalCards).padStart(2, '0')}</span>
-            </div>
-
-            <div className="stage-progress">
-              <div
-                className="progress-fill"
-                style={{ width: `${((activeIndex + 1) / totalCards) * 100}%` }}
-              />
-            </div>
-
-            <div className="stage-nav-buttons">
-              <button
-                className="stage-nav-btn"
-                onClick={prev}
-                disabled={activeIndex === 0}
-                aria-label="Previous service"
-              >
-                <ArrowLeft size={18} weight="bold" />
-              </button>
-              <button
-                className="stage-nav-btn"
-                onClick={next}
-                disabled={activeIndex === totalCards - 1}
-                aria-label="Next service"
-              >
-                <ArrowRight size={18} weight="bold" />
-              </button>
-            </div>
+          <div className="stage-progress">
+            <div
+              ref={progressRef}
+              className="progress-fill"
+              style={{ width: '0%' }}
+            />
           </div>
         </div>
+
       </div>
     </section>
   );

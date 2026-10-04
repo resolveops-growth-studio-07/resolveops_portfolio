@@ -3,38 +3,42 @@
    Informed by Taste Skill + VibeCurb principles
    ───────────────────────────────────────────────── */
 
-/* ── Google Fonts: Outfit (display) + Inter (body) ── */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
-
 /* ── CSS Custom Properties ───────────────────────── */
 :root {
   /* Palette — Dark studio theme */
-  --bg-primary: #0B1014;
-  --bg-raised: #141C22;
-  --bg-elevated: #1A242C;
-  --bg-card: #151E26;
-  --bg-card-hover: #1C2830;
+  --bg-primary: #0B0D10;
+  --bg-raised: #11161C;
+  --bg-elevated: #161D24;
+  --bg-card: #11161C;
+  --bg-card-hover: #181F26;
 
   /* Text */
-  --text-primary: #F4F3EE;
-  --text-secondary: #A6B1B8;
+  --text-primary: #F4F7F8;
+  --text-secondary: #9AA6B2;
   --text-muted: #6B7A84;
-  --text-accent: #B9E8D1;
+  --text-accent: #36E0D0;
 
   /* Accent */
-  --accent: #B9E8D1;
-  --accent-hover: #98D4B7;
-  --accent-dim: rgba(185, 232, 209, 0.08);
-  --accent-glow: rgba(185, 232, 209, 0.15);
+  --accent: #36E0D0;
+  --accent-rgb: 54, 224, 208;
+  --accent-secondary: #7C6CFF;
+  --highlight: #F2C879;
+  --accent-hover: #2BB6A8;
+  --accent-dim: rgba(54, 224, 208, 0.08);
+  --accent-glow: rgba(54, 224, 208, 0.15);
+
+  /* Cursor */
+  --cursor-color: var(--accent);
+  --cursor-glow: rgba(54, 224, 208, 0.2);
 
   /* Borders */
   --border-subtle: rgba(166, 177, 184, 0.1);
   --border-medium: rgba(166, 177, 184, 0.18);
   --border-strong: rgba(166, 177, 184, 0.3);
 
-  /* Typography — Outfit for display, Inter for body */
-  --font-display: 'Outfit', system-ui, -apple-system, sans-serif;
-  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  /* Typography — Manrope */
+  --font-display: 'Manrope', system-ui, -apple-system, sans-serif;
+  --font-body: 'Manrope', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
   /* Type Scale — responsive, no fixed px */
@@ -132,6 +136,11 @@ body {
   background-color: var(--bg-primary);
   min-height: 100dvh;
   overflow-x: hidden;
+}
+
+main {
+  position: relative;
+  z-index: 2;
 }
 
 /* ── Typography Base ──────────────────────────────── */

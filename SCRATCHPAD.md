@@ -1,25 +1,25 @@
 # ResolveOPS Portfolio Scratchpad
 
 ## 1. Verify the Actual Project First
-- [~] Inspect framework, dependencies, scripts, and lockfile
-- [~] Inspect routes, components, styles, and public assets
-- [ ] Inspect existing 3D and animation implementation (No WebGL dependencies found)
-- [ ] Inspect contact form behavior
+- [x] Inspect framework, dependencies, scripts, and lockfile
+- [x] Inspect routes, components, styles, and public assets
+- [x] Inspect existing 3D and animation implementation (No WebGL dependencies found)
+- [x] Inspect contact form behavior
 - [ ] Inspect responsive navigation and accessibility
 - [ ] Check console errors, build failures, and broken links
-- [ ] Create recoverable backup / Git checkpoint
+- [x] Create recoverable backup / Git checkpoint
 
 ## 2. Verify Tools, MCP, and Skills
-- [ ] Check available MCP servers and browser tools
-- [ ] Verify `design-taste-frontend`
-- [ ] Verify `awwwards-hero`
-- [ ] Verify `awwwards-motion`
-- [ ] Verify `awwwards-sections`
+- [x] Check available MCP servers and browser tools
+- [x] Verify `design-taste-frontend`
+- [x] Verify `awwwards-hero`
+- [x] Verify `awwwards-motion`
+- [x] Verify `awwwards-sections`
 
 ## 3. Brand and Required Content
-- [ ] Validate Tagline, Subtitle, and Contact Email
-- [ ] Validate Services (01 - 06)
-- [ ] Validate Projects (YMTA Dental, Sindhu's Dental)
+- [x] Validate Tagline, Subtitle, and Contact Email
+- [x] Validate Services (01 - 06)
+- [x] Validate Projects (YMTA Dental, Sindhu's Dental)
 
 ## 4. Analyze the References
 - [ ] Suriya Portfolio (Layout, typography)
@@ -28,24 +28,24 @@
 - [ ] Pin.it (Motion)
 
 ## 5. Verify and Complete the Design
-- [ ] Color system implementation (#0B0D10, #11161C, #36E0D0, #7C6CFF, #F2C879, #F4F7F8, #9AA6B2)
-- [ ] Self-hosted font implementation (Manrope)
-- [ ] Home, Services, Work, About, Contact, 404 pages
-- [ ] Process section
-- [ ] Footer RESOLVEOPS wordmark
+- [x] Color system implementation (#0B0D10, #11161C, #36E0D0, #7C6CFF, #F2C879, #F4F7F8, #9AA6B2)
+- [x] Self-hosted font implementation (Manrope)
+- [x] Home, Services, Work, About, Contact, 404 pages
+- [x] Process section
+- [x] Footer RESOLVEOPS wordmark
 
 ## 6. Real 3D Digital Core
-- [ ] Install Three.js / R3F dependencies
-- [ ] Implement WebGL scene
-- [ ] reduced-motion and no-WebGL fallback
+- [x] Install Three.js / R3F dependencies
+- [x] Implement WebGL scene
+- [x] reduced-motion and no-WebGL fallback
 
 ## 7. Service-Card Animation
-- [ ] GSAP scroll-triggered curved arrangement
-- [ ] Mobile readable alternative
+- [x] GSAP scroll-triggered curved arrangement (using native Scroll-driven requestAnimationFrame)
+- [x] Mobile readable alternative
 
 ## 8. Contact and Navigation
-- [ ] Mailto fallback implementation
-- [ ] Validation and focus management
+- [x] Mailto fallback implementation
+- [x] Validation and focus management
 - [ ] Accessible modal navigation
 
 ## 9. Performance and Accessibility

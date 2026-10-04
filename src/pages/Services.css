@@ -22,6 +22,83 @@
   line-height: 1.7;
 }
 
+/* ── Body layout (indicator + blocks side-by-side) ── */
+
+.services-body {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+}
+
+.services-blocks {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Vertical Progress Indicator ─────────────────── */
+
+.svc-progress {
+  position: sticky;
+  top: calc(var(--nav-height) + 48px);
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 20px 0 32px;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.svc-progress-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 200ms ease;
+}
+
+.svc-progress-num {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  transition: color 250ms ease, opacity 250ms ease;
+  opacity: 0.4;
+  min-width: 22px;
+}
+
+.svc-progress-bar {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: var(--border-subtle);
+  border-radius: 2px;
+  transition: width 300ms var(--spring-snappy),
+              background 250ms ease,
+              opacity 250ms ease;
+  opacity: 0.4;
+}
+
+/* Active state */
+.svc-progress-item.active .svc-progress-num {
+  color: var(--accent);
+  opacity: 1;
+}
+
+.svc-progress-item.active .svc-progress-bar {
+  background: var(--accent);
+  width: 32px;
+  opacity: 1;
+}
+
+/* Hover state (non-active) */
+.svc-progress-item:not(.active):hover .svc-progress-num,
+.svc-progress-item:not(.active):hover .svc-progress-bar {
+  opacity: 0.7;
+}
+
 /* ── Service Blocks ──────────────────────────────── */
 
 .service-block {
@@ -127,6 +204,8 @@
   line-height: 1.65;
 }
 
+/* ── Visual panel — tilt interaction ─────────────── */
+
 .service-block-visual {
   width: 100%;
   aspect-ratio: 4 / 3;
@@ -141,9 +220,86 @@
   top: calc(var(--nav-height) + var(--space-xl));
 }
 
+.tilt-visual {
+  transform-style: preserve-3d;
+  transition: transform 350ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              border-color 250ms ease,
+              box-shadow 250ms ease;
+  will-change: transform;
+}
+
+.tilt-visual:hover {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(54, 224, 208, 0.15);
+}
+
+/* ── CTA button — arrow micro-animation ──────────── */
+
 .service-block-cta {
   margin-top: var(--space-sm);
+  transition: transform 200ms ease, box-shadow 200ms ease;
 }
+
+.service-block-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(54, 224, 208, 0.2);
+}
+
+.service-block-cta .cta-arrow {
+  transition: transform 200ms ease;
+}
+
+.service-block-cta:hover .cta-arrow {
+  transform: translateX(3px);
+}
+
+/* ── Next-service strip ───────────────────────────── */
+
+.next-strip {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  opacity: 0.7;
+  transition: opacity 200ms ease;
+}
+
+.next-strip:hover {
+  opacity: 1;
+}
+
+.next-strip-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.next-strip-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+
+.next-strip-link:hover {
+  color: var(--text-primary);
+}
+
+.next-strip--cta .next-strip-link {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ── Bottom CTA section ──────────────────────────── */
 
 .services-cta {
   border-top: 1px solid var(--border-subtle);
@@ -152,9 +308,54 @@
 
 /* ── Responsive ──────────────────────────────────── */
 
+@media (max-width: 1024px) {
+  /* Shrink the progress indicator on tablets */
+  .svc-progress {
+    padding: 0 12px 0 16px;
+    gap: 16px;
+  }
+
+  .svc-progress-num {
+    font-size: 0.65rem;
+  }
+
+  .svc-progress-bar {
+    width: 14px;
+  }
+
+  .svc-progress-item.active .svc-progress-bar {
+    width: 22px;
+  }
+}
+
 @media (max-width: 768px) {
   .services-hero {
     padding-top: calc(var(--nav-height) + var(--space-3xl));
+  }
+
+  /* Switch to horizontal indicator row at the top of the blocks area */
+  .services-body {
+    flex-direction: column;
+  }
+
+  .svc-progress {
+    position: relative;
+    top: auto;
+    flex-direction: row;
+    justify-content: center;
+    padding: var(--space-lg) var(--space-xl);
+    gap: 14px;
+    border-bottom: 1px solid var(--border-subtle);
+    width: 100%;
+  }
+
+  .svc-progress-bar {
+    display: none; /* hide bar on mobile, number alone is enough */
+  }
+
+  .svc-progress-num {
+    font-size: 0.75rem;
+    min-width: unset;
   }
 
   .service-block-layout,
@@ -175,5 +376,11 @@
 
   .service-details-grid {
     grid-template-columns: 1fr;
+  }
+
+  .next-strip {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
   }
 }

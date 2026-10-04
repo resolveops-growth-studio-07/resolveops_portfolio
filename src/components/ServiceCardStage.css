@@ -1,22 +1,61 @@
-/* ── Service Card Stage ───────────────────────────── */
+/* ══════════════════════════════════════════════════════════════
+   Services — GSAP ScrollTrigger Two-Card Layout
+   ══════════════════════════════════════════════════════════════
 
-.service-stage-section {
-  position: relative;
+   Layout:
+   ┌─────────────────────────────────────────────────────────┐
+   │  .stage-viewport (overflow: hidden)                     │
+   │  ┌─ .cards-track (flex row, GSAP translateX) ────────┐ │
+   │  │  [card][gap][card][gap][card][gap]…                │ │
+   │  │  ◄── only 2 cards visible at any time ──►          │ │
+   │  └───────────────────────────────────────────────────┘ │
+   └─────────────────────────────────────────────────────────┘
+
+   GSAP ScrollTrigger pins the section and scrubs the track.
+   No manual scroll listeners or RAF loops needed.
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Section ─────────────────────────────────────────────────
+   ScrollTrigger pins this section. No height hack needed —
+   GSAP creates the scroll space automatically via `end: +=2400`.
+   ─────────────────────────────────────────────────────────── */
+.service-stage {
+  /* Let GSAP handle pinning */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-/* ── Stage Header ────────────────────────────────── */
+/* Inner container — max-width + vertical padding */
+.stage-inner {
+  display: flex;
+  flex-direction: column;
+  padding-top:    clamp(2rem, 5vh, 4rem);
+  padding-bottom: clamp(1.5rem, 3vh, 2.5rem);
+  box-sizing: border-box;
+  /* Take up available height within the pinned section */
+  height: 100vh;
+  justify-content: center;
+}
+
+/* ── Section header ──────────────────────────────────────── */
 
 .stage-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--space-3xl);
+  margin-bottom: var(--space-xl);
+  flex-shrink: 0;
 }
 
 .stage-title {
   font-size: var(--text-5xl);
   font-weight: 700;
   letter-spacing: -0.03em;
+  line-height: 1;
 }
 
 .stage-view-all {
@@ -25,76 +64,110 @@
   gap: 0.4rem;
   font-size: var(--text-sm);
   color: var(--text-secondary);
+  transition: color 200ms ease;
+  flex-shrink: 0;
 }
+.stage-view-all:hover { color: var(--accent); }
 
-.stage-view-all:hover {
-  color: var(--accent);
-}
-
-/* ── Sticky Desktop Stage ────────────────────────── */
-
-.stage-sticky {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  padding-top: var(--nav-height);
-}
-
+/* ── Viewport ────────────────────────────────────────────────
+   The clipping window. Exactly wide enough for 2 cards + gap.
+   overflow: hidden hides the rest of the track.
+   ──────────────────────────────────────────────────────────── */
 .stage-viewport {
-  perspective: 1200px;
-  perspective-origin: center center;
-  width: 100%;
-  height: 480px;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
   position: relative;
-  overflow: visible;
 }
 
-.cards-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
+/* ── Cards track ─────────────────────────────────────────────
+   Horizontal flex row containing all 6 cards.
+   GSAP translates this left/right via transform.
+   ──────────────────────────────────────────────────────────── */
+.cards-track {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  gap: 32px;
+  height: 100%;
+  /* Width is determined by children; no explicit width needed */
+  will-change: transform;
 }
 
-/* ── Cards ───────────────────────────────────────── */
+/* ── Service cards ───────────────────────────────────────────
+   Each card is exactly half the viewport width minus half the gap.
+   Two cards + gap = 100% of the viewport width.
 
+   flex: 0 0 calc(50% - 16px) prevents flex from stretching/shrinking.
+   ──────────────────────────────────────────────────────────── */
 .stage-card {
-  position: absolute;
-  width: 520px;
-  max-width: 85vw;
+  flex: 0 0 calc(50% - 16px);
+  min-width: 0;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xl);
   overflow: hidden;
-  transition: transform 0.65s var(--spring-smooth),
-              opacity 0.5s var(--ease-out);
-  backface-visibility: hidden;
+
+  /* border/shadow transitions for active↔secondary class toggle */
+  transition:
+    border-color 400ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow   400ms cubic-bezier(0.16, 1, 0.3, 1),
+    background   400ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.stage-card.active {
+/* Active card — left slot (primary) */
+.stage-card.is-active {
   border-color: var(--border-medium);
-  box-shadow: var(--shadow-lg),
-              0 0 40px rgba(185, 232, 209, 0.04);
+  box-shadow:
+    0 8px 40px rgba(0, 0, 0, 0.30),
+    0 0 52px rgba(54, 224, 208, 0.08);
 }
+
+/* Secondary card — right slot */
+.stage-card.is-secondary {
+  border-color: var(--border-subtle);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.20);
+  background: linear-gradient(
+    160deg,
+    rgba(0, 0, 0, 0.08) 0%,
+    rgba(0, 0, 0, 0.04) 100%
+  ), var(--bg-card);
+}
+
+/* Drag prevention */
+.stage-card a,
+.stage-card button,
+.stage-card img,
+.stage-card svg {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+/* ── Card inner layout ───────────────────────────────────── */
 
 .card-visual-wrapper {
   width: 100%;
   height: 200px;
+  flex-shrink: 0;
   background: var(--bg-elevated);
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   border-bottom: 1px solid var(--border-subtle);
+  pointer-events: none;
 }
 
 .card-content {
-  padding: var(--space-xl) var(--space-xl) var(--space-2xl);
+  flex: 1;
+  min-height: 0;
+  padding: var(--space-lg) var(--space-xl) var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .card-number {
@@ -105,36 +178,45 @@
   color: var(--accent);
   text-transform: uppercase;
   display: block;
-  margin-bottom: var(--space-sm);
+  margin-bottom: 0.5rem;
+  flex-shrink: 0;
 }
 
 .card-title {
   font-size: var(--text-2xl);
   font-weight: 600;
   letter-spacing: -0.02em;
-  margin-bottom: var(--space-sm);
+  margin-bottom: 0.6rem;
   line-height: 1.2;
+  flex-shrink: 0;
 }
 
 .card-description {
   font-size: var(--text-sm);
   color: var(--text-secondary);
   line-height: 1.65;
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-md);
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 }
 
 .card-capabilities {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-bottom: var(--space-lg);
+  gap: 0.35rem;
+  margin-bottom: var(--space-md);
+  flex-shrink: 0;
 }
 
 .capability-tag {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 500;
   letter-spacing: 0.04em;
-  padding: 0.3rem 0.7rem;
+  padding: 0.25rem 0.6rem;
   border-radius: var(--radius-pill);
   background-color: var(--accent-dim);
   color: var(--accent);
@@ -146,15 +228,19 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
+  flex-shrink: 0;
+  margin-top: auto;
 }
 
-/* ── Stage Controls ──────────────────────────────── */
+/* ── Controls row ────────────────────────────────────────── */
 
 .stage-controls {
   display: flex;
   align-items: center;
   gap: var(--space-xl);
-  margin-top: var(--space-2xl);
+  flex-shrink: 0;
+  margin-top: var(--space-lg);
+  user-select: none;
 }
 
 .stage-counter {
@@ -171,11 +257,7 @@
   color: var(--text-primary);
 }
 
-.counter-separator {
-  font-size: var(--text-sm);
-  color: var(--text-muted);
-}
-
+.counter-separator,
 .counter-total {
   font-size: var(--text-sm);
   color: var(--text-muted);
@@ -193,82 +275,58 @@
   height: 100%;
   background: var(--accent);
   border-radius: 1px;
-  transition: width 0.5s var(--spring-smooth);
+  /* No CSS transition — updated per-scroll via GSAP onUpdate */
 }
 
-.stage-nav-buttons {
-  display: flex;
-  gap: 0.5rem;
+/* ── Responsive ──────────────────────────────────────────── */
+
+/* Tablet: keep 2-card, tighten typography */
+@media (max-width: 900px) {
+  .stage-title { font-size: var(--text-4xl); }
+  .card-visual-wrapper { height: 160px; }
+  .card-title { font-size: var(--text-xl); }
+  .card-description { -webkit-line-clamp: 3; }
 }
 
-.stage-nav-btn {
-  width: 42px;
-  height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--border-medium);
-  border-radius: 50%;
-  color: var(--text-primary);
-  transition: all var(--duration-fast) var(--ease-out);
-}
+/* Small tablet and below: single card visible */
+@media (max-width: 640px) {
+  .stage-inner {
+    padding-top: var(--space-xl);
+    padding-bottom: var(--space-xl);
+  }
 
-.stage-nav-btn:hover:not(:disabled) {
-  border-color: var(--accent);
-  color: var(--accent);
-  background-color: var(--accent-dim);
-}
-
-.stage-nav-btn:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
-
-/* ── Mobile Cards ────────────────────────────────── */
-
-.mobile-cards {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xl);
-}
-
-.mobile-service-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  transition: border-color var(--duration-fast) var(--ease-out);
-}
-
-.mobile-service-card:hover {
-  border-color: var(--border-medium);
-}
-
-.mobile-card-visual {
-  height: 160px;
-  background: var(--bg-elevated);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.mobile-card-content {
-  padding: var(--space-lg);
-}
-
-/* ── Responsive ──────────────────────────────────── */
-
-@media (max-width: 768px) {
   .stage-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--space-md);
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
   }
+
+  /* One card at a time on mobile */
+  .stage-card {
+    flex: 0 0 calc(100% - 8px);
+  }
+
+  .card-visual-wrapper { height: 140px; }
+  .card-content { padding: var(--space-md) var(--space-lg) var(--space-lg); }
+  .card-title { font-size: var(--text-xl); }
+  .card-description { -webkit-line-clamp: 3; }
+
+  .stage-controls { gap: var(--space-md); margin-top: var(--space-md); }
 }
 
-@media (max-width: 600px) {
+/* ── Reduced motion ──────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .cards-track {
+    /* If JS doesn't run the GSAP animation, show cards in a grid */
+    flex-wrap: wrap;
+  }
+
   .stage-card {
-    width: 90vw;
+    flex: 0 0 calc(50% - 16px);
+  }
+
+  .stage-viewport {
+    overflow: auto;
   }
 }

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from '@phosphor-icons/react';
 import { brand, processSteps } from '../data/content';
 import Reveal from '../components/Reveal';
+import NetworkCanvas from '../components/NetworkCanvas';
 import './About.css';
 
 export default function About() {
@@ -9,7 +10,11 @@ export default function About() {
     <>
       {/* Hero */}
       <section className="about-hero section" aria-label="About ResolveOPS">
-        <div className="container">
+        {/* Network animation — sits behind all content */}
+        <div className="about-network-bg" aria-hidden="true">
+          <NetworkCanvas />
+        </div>
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <Reveal>
             <h1 className="about-hero-title">
               A freelance community that builds

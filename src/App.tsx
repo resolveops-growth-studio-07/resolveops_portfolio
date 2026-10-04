@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import SiteHeader from './components/SiteHeader';
 import SiteFooter from './components/SiteFooter';
+import GlowPointer from './components/GlowPointer';
 import Home from './pages/Home';
 import Services from './pages/Services';
 import Work from './pages/Work';
@@ -39,6 +40,7 @@ export default function App() {
     <BrowserRouter>
       <ScrollToTop />
       <PageTitleUpdater />
+      <GlowPointer />
       <SiteHeader />
       <main>
         <Routes>

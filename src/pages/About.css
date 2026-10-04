@@ -1,10 +1,28 @@
 /* ── About Page ───────────────────────────────────── */
 
 .about-hero {
+  position: relative;          /* establish stacking context for the canvas */
+  overflow: hidden;
   padding-top: calc(var(--nav-height) + var(--space-4xl));
   padding-bottom: var(--space-3xl);
   border-bottom: 1px solid var(--border-subtle);
 }
+
+/* Network canvas wrapper — compact decorative cluster, right-center */
+.about-network-bg {
+  position: absolute;
+  top: 50%;
+  right: clamp(16px, 4%, 60px);
+  transform: translateY(-50%);
+  width: clamp(340px, 42vw, 600px);
+  height: clamp(300px, 38vw, 520px);
+  pointer-events: none;
+  z-index: 0;
+  /* radial mask: solid center, fade at all edges */
+  -webkit-mask-image: radial-gradient(ellipse 75% 75% at 58% 50%, black 35%, transparent 100%);
+          mask-image: radial-gradient(ellipse 75% 75% at 58% 50%, black 35%, transparent 100%);
+}
+
 
 .about-hero-title {
   font-size: var(--text-5xl);
@@ -40,6 +58,15 @@
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   background: var(--bg-primary);
+  transition: border-color 200ms ease,
+              background 200ms ease,
+              box-shadow 200ms ease;
+}
+
+.philosophy-item:hover {
+  border-color: var(--accent);
+  background: linear-gradient(180deg, rgba(54, 224, 208, 0.04) 0%, rgba(54, 224, 208, 0.01) 100%), var(--bg-primary);
+  box-shadow: 0 0 24px rgba(54, 224, 208, 0.1);
 }
 
 .philosophy-number {
@@ -149,9 +176,19 @@
 
 .value-card {
   padding: var(--space-2xl);
+  border: 1px solid var(--border-subtle);
   border-top: 2px solid var(--accent);
   border-radius: 0 0 var(--radius-md) var(--radius-md);
   background: var(--bg-primary);
+  transition: border-color 200ms ease,
+              background 200ms ease,
+              box-shadow 200ms ease;
+}
+
+.value-card:hover {
+  border-color: var(--accent);
+  background: linear-gradient(180deg, rgba(54, 224, 208, 0.04) 0%, rgba(54, 224, 208, 0.01) 100%), var(--bg-primary);
+  box-shadow: 0 0 24px rgba(54, 224, 208, 0.1);
 }
 
 .value-title {
@@ -178,6 +215,10 @@
 @media (max-width: 768px) {
   .about-hero {
     padding-top: calc(var(--nav-height) + var(--space-3xl));
+  }
+
+  .about-network-bg {
+    display: none; /* too small to be meaningful; keep mobile clean */
   }
 
   .philosophy-grid {

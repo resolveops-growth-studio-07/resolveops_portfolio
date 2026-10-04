@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, EnvelopeSimple } from '@phosphor-icons/react';
 import { brand, projects, processSteps } from '../data/content';
@@ -5,13 +6,22 @@ import Reveal from '../components/Reveal';
 import SectionHeading from '../components/SectionHeading';
 import ServiceCardStage from '../components/ServiceCardStage';
 import ProjectCard from '../components/ProjectCard';
+import DigitalCore from '../components/DigitalCore';
+import StudioIntro from '../components/StudioIntro';
 import './Home.css';
 
 export default function Home() {
+  // ── Connecting-line state ─────────────────────────────────
+  const [hoveredStep, setHoveredStep] = useState(-1);
+  // scaleX of the illuminated fill: 0 (none) → 1 (all 5 steps)
+  const connectorScale =
+    hoveredStep === -1 ? 0 : (hoveredStep + 1) / processSteps.length;
+
   return (
     <>
       {/* ── Hero ─────────────────────────────────── */}
       <section className="hero" aria-label="Hero">
+        <DigitalCore />
         <div className="container hero-container">
           <Reveal delay={100} direction="none">
             <span className="hero-eyebrow">
@@ -55,28 +65,7 @@ export default function Home() {
       </section>
 
       {/* ── Studio Introduction ───────────────────── */}
-      <section className="section studio-intro" aria-label="About us">
-        <div className="container">
-          <div className="intro-layout">
-            <Reveal>
-              <div className="intro-label">The Studio</div>
-            </Reveal>
-            <Reveal delay={120}>
-              <h2 className="intro-heading">
-                We bring design, development, marketing, automation, and analytics together — 
-                <span className="text-accent"> built around your business goals.</span>
-              </h2>
-            </Reveal>
-            <Reveal delay={200}>
-              <p className="intro-body">
-                ResolveOPS is a freelance community that works with businesses at every stage of their digital journey. 
-                Whether you're launching your first website or scaling with automation and analytics, our team handles 
-                the technical work so you can focus on running your business.
-              </p>
-            </Reveal>
-          </div>
-        </div>
-      </section>
+      <StudioIntro />
 
       {/* ── Services — Animated Stage ─────────────── */}
       <ServiceCardStage />
@@ -111,9 +100,21 @@ export default function Home() {
             subtitle="A focused process that moves from understanding to results."
           />
           <div className="process-grid">
+            {/* Connector line — rendered first so it paints behind the cards */}
+            <div className="process-connector" aria-hidden="true">
+              <div
+                className="process-connector-fill"
+                style={{ transform: `scaleX(${connectorScale.toFixed(4)})` }}
+              />
+            </div>
+
             {processSteps.map((step, i) => (
-              <Reveal key={step.number} delay={i * 80}>
-                <div className="process-step">
+              <Reveal key={step.number} delay={i * 80} className="process-reveal">
+                <div
+                  className="process-step"
+                  onMouseEnter={() => setHoveredStep(i)}
+                  onMouseLeave={() => setHoveredStep(-1)}
+                >
                   <span className="process-number">{step.number}</span>
                   <h3 className="process-title">{step.title}</h3>
                   <p className="process-description">{step.description}</p>
@@ -128,17 +129,18 @@ export default function Home() {
       <section className="section cta-section" aria-label="Get started">
         <div className="container cta-container">
           <Reveal>
-            <h2 className="cta-heading">{brand.ctaHeading}</h2>
+            <span className="cta-eyebrow">HAVE A PROJECT IN MIND?</span>
           </Reveal>
-          <Reveal delay={120}>
+          <Reveal delay={100}>
+            <h2 className="cta-heading">
+              Let's build something that helps<br />your business grow.
+            </h2>
+          </Reveal>
+          <Reveal delay={200}>
             <div className="cta-actions">
               <Link to="/contact" className="btn btn-primary btn-lg">
                 Start a project <ArrowRight size={16} weight="bold" />
               </Link>
-              <a href={`mailto:${brand.email}`} className="btn btn-ghost">
-                <EnvelopeSimple size={16} weight="bold" />
-                {brand.email}
-              </a>
             </div>
           </Reveal>
         </div>
