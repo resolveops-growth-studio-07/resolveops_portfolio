@@ -55,7 +55,11 @@ export default function SiteHeader() {
             }
           }}
         >
-          <img src="/assets/logo.png" alt="ResolveOPS Logo" className="header-logo-icon" />
+          <img
+            src="/resolveops-icon-only.png"
+            alt="ResolveOPS Logo"
+            className="header-logo-icon"
+          />
           <div className="header-logo-text">
             <span className="logo-name">{brand.name}</span>
             <span className="logo-subtitle">{brand.subtitle}</span>

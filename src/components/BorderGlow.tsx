@@ -1,6 +1,6 @@
 ﻿import { useEffect } from 'react';
 
-const selector = '.contact-form-container,.contact-card,.contact-sidebar-note,.project-card,.service-block-visual,.philosophy-item,.value-card,.rova-panel,.gallery-detail,.workflow-panel,.workflow-choice';
+const selector = '.contact-form-container,.contact-card,.contact-sidebar-note,.project-card,.service-block-visual,.philosophy-item,.value-card,.gallery-detail,.workflow-panel,.workflow-choice';
 
 export default function BorderGlow() {
   useEffect(() => {

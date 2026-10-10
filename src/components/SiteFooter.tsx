@@ -22,7 +22,11 @@ export default function SiteFooter() {
             {/* Column 1: Brand */}
             <div className="footer-brand">
               <div className="footer-logo">
-                <img src="/assets/logo.png" alt="ResolveOPS Logo" className="footer-logo-icon" />
+                <img
+                  src="/resolveops-icon-only.png"
+                  alt="ResolveOPS Logo"
+                  className="footer-logo-icon"
+                />
                 <div className="footer-logo-text">
                   <span className="footer-logo-name">{brand.name}</span>
                   <span className="footer-logo-subtitle">GROWTH STUDIO</span>

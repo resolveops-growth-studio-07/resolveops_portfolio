@@ -1,0 +1,10 @@
+:root {
+  --resolveops-bg: #050711;
+  --resolveops-bg-elevated: #090D1F;
+  --resolveops-cyan: #00D8F5;
+  --resolveops-blue: #1F69FF;
+  --resolveops-violet: #7E2CFF;
+  --resolveops-white: #F7F9FF;
+  --resolveops-muted: #97A3BA;
+  --resolveops-gradient: linear-gradient(110deg, #00D8F5 0%, #1F69FF 52%, #7E2CFF 100%);
+}

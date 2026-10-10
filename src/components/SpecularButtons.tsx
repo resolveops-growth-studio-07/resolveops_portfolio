@@ -16,7 +16,7 @@ export default function SpecularButtons(){
   const mesh=new Mesh(gl,{geometry,program});host.appendChild(gl.canvas);
   let pointer:{x:number;y:number}|null=null, raf=0, last=performance.now(), disposed=false;
   let buttons:HTMLElement[]=[];const states=new Map<HTMLElement,{angle:number;bright:number}>();
-  const collect=()=>{buttons=Array.from(document.querySelectorAll<HTMLElement>('.btn,button,[data-specular]'));for(const key of states.keys())if(!key.isConnected)states.delete(key);};collect();
+  const collect=()=>{buttons=Array.from(document.querySelectorAll<HTMLElement>('.btn,button,[data-specular]')).filter(btn=>!btn.closest('.rova-panel'));for(const key of states.keys())if(!key.isConnected)states.delete(key);};collect();
   const schedule=()=>{if(!raf && !disposed)raf=requestAnimationFrame(draw)};
   const resize=()=>{renderer.setSize(innerWidth,innerHeight);schedule()};resize();
   function draw(now:number){

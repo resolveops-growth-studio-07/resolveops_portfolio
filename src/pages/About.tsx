@@ -101,7 +101,7 @@ export default function About() {
               <div className="value-card">
                 <h4 className="value-title">Clarity over complexity</h4>
                 <p className="value-text">
-                  The best solutions are the ones your team can understand and use. We build 
+                  The best solutions are the ones your team can understand and use. We build
                   straightforward systems that solve real problems without unnecessary complication.
                 </p>
               </div>
@@ -110,7 +110,7 @@ export default function About() {
               <div className="value-card">
                 <h4 className="value-title">Results over deliverables</h4>
                 <p className="value-text">
-                  A website that nobody visits, a dashboard nobody reads, or an automation nobody 
+                  A website that nobody visits, a dashboard nobody reads, or an automation nobody
                   uses — those aren't results. We measure our work by what it enables for your business.
                 </p>
               </div>
@@ -119,7 +119,7 @@ export default function About() {
               <div className="value-card">
                 <h4 className="value-title">Honest communication</h4>
                 <p className="value-text">
-                  We tell you what we can do, what we can't, and what we'd recommend. 
+                  We tell you what we can do, what we can't, and what we'd recommend.
                   No inflated promises, no vague timelines, no scope that keeps growing without a conversation.
                 </p>
               </div>

@@ -1,17 +1,5 @@
 import { useEffect, useState, type FormEvent, type KeyboardEvent } from 'react';
-import {
-  EnvelopeSimple,
-  PaperPlaneTilt,
-  Copy,
-  Check,
-  Globe,
-  PaintBrush,
-  Cpu,
-  GitBranch,
-  TrendUp,
-  ChartBar,
-  Sparkle,
-} from '@phosphor-icons/react';
+import { EnvelopeSimple, PaperPlaneTilt, Copy, Check, Monitor, Palette, Robot, DotsThreeCircle, TrendUp, ChartBar, GitBranch } from '@phosphor-icons/react';
 import { useSearchParams } from 'react-router-dom';
 import { brand, services } from '../data/content';
 import Reveal from '../components/Reveal';
@@ -55,30 +43,16 @@ export const BUDGET_OPTIONS = [
   'Not sure yet',
 ] as const;
 
-export interface ProjectTypeOption {
-  id: string;
-  label: string;
-  icon: typeof Globe;
-}
 
-export const PROJECT_TYPES: ProjectTypeOption[] = [
-  { id: 'website', label: 'Website', icon: Globe },
-  { id: 'ui-ux', label: 'UI/UX Design', icon: PaintBrush },
-  { id: 'ai-automation', label: 'AI Automation', icon: Cpu },
-  { id: 'crm-workflow', label: 'CRM / Workflow Automation', icon: GitBranch },
-  { id: 'seo-marketing', label: 'SEO & Digital Marketing', icon: TrendUp },
-  { id: 'business-analytics', label: 'Business Analytics', icon: ChartBar },
-  { id: 'other', label: 'Other', icon: Sparkle },
-];
 
 export const SERVICE_OPTIONS = [
-  'Website Development',
-  'UI/UX & Conversion Optimization',
-  'SEO & Digital Marketing',
-  'AI Automation',
-  'CRM & Workflow Automation',
-  'Business Analytics',
-  'Other',
+  { label: 'Website Development', icon: Monitor },
+  { label: 'UI/UX & Conversion Optimization', icon: Palette },
+  { label: 'SEO & Digital Marketing', icon: TrendUp },
+  { label: 'AI Automation', icon: Robot },
+  { label: 'CRM & Workflow Automation', icon: GitBranch },
+  { label: 'Business Analytics', icon: ChartBar },
+  { label: 'Other', icon: DotsThreeCircle },
 ] as const;
 
 export interface FormData {
@@ -136,12 +110,6 @@ export default function Contact() {
     }));
   };
 
-  const toggleProjectType = (typeLabel: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      projectType: prev.projectType === typeLabel ? '' : typeLabel,
-    }));
-  };
 
   const toggleService = (service: string) => {
     setFormData((prev) => {
@@ -397,47 +365,6 @@ export default function Contact() {
                     </div>
                   </div>
 
-                  {/* ROW 4: Project Type (Selectable Cards) */}
-                  <div className="form-group">
-                    <div className="form-label-row">
-                      <span className="form-label">
-                        PROJECT TYPE <span className="optional">(OPTIONAL)</span>
-                      </span>
-                      {formData.projectType && (
-                        <button
-                          type="button"
-                          className="form-clear-btn"
-                          onClick={() => setFormData((prev) => ({ ...prev, projectType: '' }))}
-                        >
-                          Clear
-                        </button>
-                      )}
-                    </div>
-                    <div className="project-type-grid" role="group" aria-label="Project type options">
-                      {PROJECT_TYPES.map((type) => {
-                        const Icon = type.icon;
-                        const isSelected = formData.projectType === type.label;
-                        return (
-                          <button
-                            key={type.id}
-                            type="button"
-                            className={`project-type-card ${isSelected ? 'selected' : ''}`}
-                            onClick={() => toggleProjectType(type.label)}
-                            onKeyDown={(e) => handleKeyToggle(e, () => toggleProjectType(type.label))}
-                            aria-pressed={isSelected}
-                          >
-                            <div className="project-type-icon-wrapper" aria-hidden="true">
-                              <Icon size={20} weight={isSelected ? 'bold' : 'regular'} />
-                            </div>
-                            <span className="project-type-label">{type.label}</span>
-                            <div className={`project-type-indicator ${isSelected ? 'active' : ''}`} aria-hidden="true">
-                              {isSelected && <Check size={12} weight="bold" />}
-                            </div>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
 
                   {/* ROW 5: Services Required (Multi-Select Chips) */}
                   <div className="form-group">
@@ -456,7 +383,9 @@ export default function Contact() {
                       )}
                     </div>
                     <div className="services-chips-group" role="group" aria-label="Services required multi-select">
-                      {SERVICE_OPTIONS.map((service) => {
+                      {SERVICE_OPTIONS.map((option) => {
+                        const service = option.label;
+                        const Icon = option.icon;
                         const isSelected = formData.services.includes(service);
                         return (
                           <button
@@ -468,8 +397,8 @@ export default function Contact() {
                             role="checkbox"
                             aria-checked={isSelected}
                           >
-                            <span className="service-chip-indicator" aria-hidden="true">
-                              {isSelected ? <Check size={12} weight="bold" /> : '+'}
+                            <span className="service-chip-icon" aria-hidden="true">
+                              <Icon size={16} weight={isSelected ? "bold" : "regular"} />
                             </span>
                             <span>{service}</span>
                           </button>

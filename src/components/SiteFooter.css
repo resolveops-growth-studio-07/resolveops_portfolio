@@ -67,7 +67,7 @@
   width: auto;
   display: block;
   object-fit: contain;
-  filter: grayscale(1) sepia(0.3);
+  
 }
 
 .footer-logo-text {
@@ -241,3 +241,5 @@
     bottom: 12px;
   }
 }
+
+

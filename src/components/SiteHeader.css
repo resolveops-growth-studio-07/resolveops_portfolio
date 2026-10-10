@@ -61,7 +61,7 @@
   width: auto;
   display: block;
   object-fit: contain;
-  filter: brightness(1.15);
+  transition: transform var(--duration-fast, 0.2s) ease;
 }
 
 .header-logo-text {
@@ -248,8 +248,12 @@
   }
 
   .header-logo-icon {
-    height: 30px;
-  }
+  height: 36px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  transition: transform var(--duration-fast, 0.2s) ease;
+}
 
   .header-nav {
     display: none;
@@ -263,6 +267,8 @@
     display: flex;
   }
 }
-.header-logo-icon{filter:grayscale(1) sepia(.3)}
+
 @media(max-width:768px){.header-actions .header-cta{display:none}.header-actions{flex-shrink:0}.header-inner{gap:12px}.header-logo{min-width:0}}
 .mobile-menu.open{pointer-events:auto;max-height:calc(100dvh - 100px);overflow-y:auto}
+
+

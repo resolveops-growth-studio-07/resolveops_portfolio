@@ -197,7 +197,7 @@ export const services: Service[] = [
 // ── Projects ──────────────────────────────────────
 
 export const projects: Project[] = [
-  {
+{
     id: 'ymta-dental',
     title: 'YMTA Dental Clinic',
     category: 'Website Development',
@@ -218,6 +218,17 @@ export const projects: Project[] = [
     urlLabel: 'View live website',
     image: '/projects/sindhu-real.png',
     alt: "Sindhu's Multispeciality Dental Clinic live website showing treatments and clinic information in Tiruppur",
+  },
+  {
+    id: 'maruthi-fitness',
+    title: 'Maruthi Fitness',
+    category: 'Website Development',
+    description:
+      '**Status:** Delivered\n**Objective:** Build a high-impact, modern digital presence for a gym, CrossFit, and functional training studio in Coimbatore.\n**Constraints:** Required fast loading speeds, visual program highlights, and direct membership conversion paths.\n**Contribution:** Full design and development.\n**Features:** Interactive workout programs, facility equipment showcase, trainer profiles, and direct enquiry pathways.\n**Outcome:** A high-impact, mobile-optimized website that drives fitness membership inquiries.',
+    url: 'https://maruthi-fitness.vercel.app/',
+    urlLabel: 'View live website',
+    image: '/projects/maruthi-real.png',
+    alt: 'Maruthi Fitness live website homepage showcasing gym facilities, CrossFit, and personal training in Coimbatore',
   },
 ];
 

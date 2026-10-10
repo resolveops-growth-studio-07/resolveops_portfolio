@@ -422,12 +422,11 @@
   background: var(--bg-card-hover);
 }
 
-.service-chip-indicator {
+.service-chip-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 14px;
-  height: 14px;
+  width: 16px; height: 16px;
   font-size: 11px;
   font-weight: 700;
   line-height: 1;
@@ -442,7 +441,7 @@
   font-weight: 600;
 }
 
-.service-chip.selected .service-chip-indicator {
+.service-chip.selected .service-chip-icon {
   color: var(--accent);
 }
 

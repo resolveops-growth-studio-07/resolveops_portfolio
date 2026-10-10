@@ -113,3 +113,14 @@
   .orb-character, .orb-sphere, .orb-face, .orb-eye, .orb-satellites, .orb-dot, .orb-wordmark { animation: none; }
   .orb-satellites { display: none; }
 }
+
+
+.orb-brand-logo {
+  height: clamp(26px, 4.5vw, 36px);
+  width: auto;
+  max-width: 80vw;
+  object-fit: contain;
+  margin: 0 auto;
+  display: block;
+  filter: drop-shadow(0 4px 16px rgba(0, 216, 245, 0.25));
+}

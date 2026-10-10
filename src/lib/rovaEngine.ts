@@ -14,7 +14,7 @@ export function getRovaReply(input: string, previous: RovaContext = {}): RovaRep
   if (has(q, ['price', 'pricing', 'cost', 'budget', 'charge', 'charges', 'quote', 'how much'])) return reply(knowledge.pricing, 'pricing');
   if (has(q, ['how long', 'timeline', 'duration', 'deadline', 'weeks', 'days'])) return reply(knowledge.timeline, 'timeline');
   if (has(q, ['testimonials', 'revenue', 'certifications', 'partnerships', 'team size', 'guarantee', 'discount'])) return reply(knowledge.fallback, 'unknown');
-  if (has(q, ['projects', 'portfolio', 'show me', 'your work', 'examples'])) return reply(`Our featured work: ${projects.map(p => p.title).join(' and ')}. Explore the actual project websites below.`, 'projects', projects.map(p => ({ label: p.title, href: p.url })));
+  if (has(q, ['projects', 'portfolio', 'show me', 'your work', 'examples'])) return reply(`Our featured work: ${projects.map(p => p.title).join(', ')}. Explore the actual project websites below.`, 'projects', projects.map(p => ({ label: p.title, href: p.url })));
   if (has(q, ['process', 'how you work', 'how do you work'])) return reply(processSteps.map(step => `${step.number} ${step.title}: ${step.description}`).join('\n\n'), 'process');
   if (has(q, ['technology', 'technologies', 'tech stack', 'tools'])) return reply(knowledge.technology, 'technology');
   if (has(q, ['services', 'what do you do', 'capabilities']) && !matched) return reply(`ResolveOPS helps businesses with ${services.map(s => s.title).join(', ')}. Which area would you like to explore?`, 'services', [{ label: 'Explore services', href: '/services' }, contact]);

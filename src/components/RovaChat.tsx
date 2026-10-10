@@ -11,8 +11,6 @@ export default function RovaChat() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [typing, setTyping] = useState(false);
-  const [suggestion, setSuggestion] = useState(0);
-  const [paused, setPaused] = useState(false);
   const wasOpened = useRef(false);
   const context = useRef<RovaContext>({});
   const panel = useRef<HTMLElement>(null);
@@ -22,13 +20,7 @@ export default function RovaChat() {
   const timer = useRef<number | undefined>(undefined);
   const closeTimer = useRef<number | undefined>(undefined);
   useEffect(() => () => { clearTimeout(timer.current); clearTimeout(closeTimer.current); }, []);
-  useEffect(() => {
-    if (!open || paused || messages.length || input || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const interval = window.setInterval(() => {
-      if (!document.hidden) setSuggestion(value => (value + 1) % suggestions.length);
-    }, 4500);
-    return () => clearInterval(interval);
-  }, [open, paused, messages.length, input]);
+  
   useEffect(() => {
     if (open) { wasOpened.current = true; inputRef.current?.focus(); }
     else if (wasOpened.current) launcher.current?.focus();
@@ -65,12 +57,43 @@ export default function RovaChat() {
       <header className="rova-header"><div><h2>RØVA<span aria-hidden="true">✳</span></h2><p>ResolveOPS Studio Assistant</p></div>
         <div className="rova-tools"><button onClick={reset} aria-label="Clear conversation" title="Clear conversation"><ArrowClockwise size={18} /></button><button onClick={close} aria-label="Close RØVA"><X size={20} /></button></div>
       </header>
+
+      <div className="rova-bg-fx" aria-hidden="true">
+        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMin slice">
+          <defs>
+            <radialGradient id="glowGleam" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.4" />
+              <stop offset="100%" stopColor="var(--accent)" stopOpacity="0" />
+            </radialGradient>
+            <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="var(--accent)" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+          <circle cx="350" cy="50" r="180" fill="url(#glowGleam)" className="rova-glow" />
+          <path d="M 150 -50 A 250 250 0 0 1 450 250" fill="none" stroke="url(#arcGrad)" strokeWidth="1" className="rova-arc" />
+          <circle cx="206" cy="53" r="2.5" fill="var(--accent)" className="rova-node" />
+        </svg>
+      </div>
+
       <div className="rova-scroll" ref={log}>
         <div className="rova-welcome"><span className="rova-kicker">A little clarity, to get started.</span><p>Hey — what are you trying to build or improve?</p><small>Your guide to our services, work and next steps.</small></div>
-        {!messages.length && <div className="rova-suggestions" onPointerEnter={() => setPaused(true)} onPointerLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={event => { if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false); }}>
+        {!messages.length && <div className="rova-suggestions">
           <span className="rova-kicker">Try asking</span>
-          <button className="rova-rotating" onClick={() => send(suggestions[suggestion])}><span key={suggestion}>{suggestions[suggestion]}</span><ArrowUpRight size={18} /></button>
-          <div className="rova-quick">{['Explore services', 'Show me your work', 'How do I start?'].map(label => <button key={label} onClick={() => send(label)}>{label}<ArrowRight size={14} /></button>)}</div>
+          <div className="rova-quick-list">
+            {[
+              'What services do you offer?',
+              'Show me your work',
+              'How do I start?',
+              "What's your process like?",
+              'Can you help with automation?'
+            ].map(label => (
+              <button key={label} className="rova-quick-btn" onClick={() => send(label)}>
+                <span>{label}</span>
+                <ArrowRight size={16} />
+              </button>
+            ))}
+          </div>
         </div>}
         <div className="rova-messages" role="log" aria-live="polite" aria-relevant="additions">
           {messages.map((message, i) => <div key={i} className={`rova-message ${message.role}`}><span className="rova-kicker">{message.role === 'rova' ? 'RØVA' : 'You'}</span><p>{message.text}</p>
