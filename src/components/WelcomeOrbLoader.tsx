@@ -63,13 +63,7 @@ export default function WelcomeOrbLoader({ onComplete }: WelcomeOrbLoaderProps) 
           <span className="orb-dot orb-dot--right" />
         </div>
       </div>
-      <div className="orb-wordmark" aria-hidden="true">
-        <img
-          src="/resolveops-logo.png"
-          alt="ResolveOPS"
-          className="orb-brand-logo"
-        />
-      </div>
+      <div className="orb-wordmark" aria-hidden="true">Resolveops</div>
     </div>
   );
 }
