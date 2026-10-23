@@ -1,0 +1,232 @@
+- generic [ref=f12e2]:
+  - status "Loading Resolveops" [ref=f12e3]:
+    - generic [aria-hidden] [ref=f12e10]: Resolveops
+  - generic [aria-hidden] [ref=f12e11]:
+    - banner:
+      - generic [ref=f12e12]:
+        - link [ref=f12e13] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f12e15]:
+            - generic [ref=f12e16]: ResolveOPS
+            - generic [ref=f12e17]: Growth studio
+        - button [ref=f12e19] [cursor=pointer]
+    - main [ref=f12e22]:
+      - region [ref=f12e23]:
+        - generic [ref=f12e24]:
+          - heading [level=1] [ref=f12e26]: Everything your business needs to get found, earn trust, and grow.
+          - paragraph [ref=f12e28]: Six core services that cover your complete digital presence — from the website your customers see to the systems that power your business behind the scenes.
+      - region [ref=f12e29]:
+        - generic [ref=f12e32]:
+          - generic [ref=f12e33]:
+            - generic [ref=f12e34]: "01"
+            - heading [level=2] [ref=f12e35]: Website Development
+          - paragraph [ref=f12e37]: We build websites that load fast, look sharp, and guide visitors toward the actions that matter to your business. Every project starts with your goals — whether that means a clean business website, a high-converting landing page, or a full web application.
+          - generic [ref=f12e39]:
+            - generic [ref=f12e40]:
+              - heading [level=4] [ref=f12e41]: What's included
+              - list [ref=f12e42]:
+                - listitem [ref=f12e43]: Custom responsive design
+                - listitem [ref=f12e44]: Mobile-first development
+                - listitem [ref=f12e45]: Performance optimization
+                - listitem [ref=f12e46]: SEO-ready structure
+                - listitem [ref=f12e47]: Content management setup
+            - generic [ref=f12e48]:
+              - heading [level=4] [ref=f12e49]: Who it's for
+              - paragraph [ref=f12e50]: Businesses launching a new website, replacing an outdated one, or building a focused landing page for a campaign.
+              - heading [level=4] [ref=f12e51]: The outcome
+              - paragraph [ref=f12e52]: A fast, professional website that represents your business clearly and helps visitors take the next step.
+          - link [ref=f12e54] [cursor=pointer]:
+            - /url: /contact?service=website-development
+            - text: Discuss this service
+        - separator [ref=f12e75]
+      - region [ref=f12e76]:
+        - generic [ref=f12e79]:
+          - generic [ref=f12e80]:
+            - generic [ref=f12e81]: "02"
+            - heading [level=2] [ref=f12e82]: UI/UX & Conversion Optimization
+          - paragraph [ref=f12e84]: Great design is invisible — visitors find what they need, understand what you offer, and take action without friction. We design interfaces in Figma, audit existing experiences, and rebuild pages with conversion in mind.
+          - generic [ref=f12e86]:
+            - generic [ref=f12e87]:
+              - heading [level=4] [ref=f12e88]: What's included
+              - list [ref=f12e89]:
+                - listitem [ref=f12e90]: Interface design in Figma
+                - listitem [ref=f12e91]: UX audit and recommendations
+                - listitem [ref=f12e92]: Conversion rate analysis
+                - listitem [ref=f12e93]: Landing page optimization
+                - listitem [ref=f12e94]: Design system creation
+            - generic [ref=f12e95]:
+              - heading [level=4] [ref=f12e96]: Who it's for
+              - paragraph [ref=f12e97]: Businesses with an existing website that isn't converting, or teams launching a new product that needs a polished user experience.
+              - heading [level=4] [ref=f12e98]: The outcome
+              - paragraph [ref=f12e99]: A clearer, more intuitive experience that makes it easier for visitors to understand your offer and reach out.
+          - link [ref=f12e101] [cursor=pointer]:
+            - /url: /contact?service=ui-ux-design
+            - text: Discuss this service
+        - separator [ref=f12e123]
+      - region [ref=f12e124]:
+        - generic [ref=f12e127]:
+          - generic [ref=f12e128]:
+            - generic [ref=f12e129]: "03"
+            - heading [level=2] [ref=f12e130]: SEO & Digital Marketing
+          - paragraph [ref=f12e132]: Visibility matters. We help businesses appear in search results, strengthen their local presence, and build a consistent content strategy that attracts the right audience over time.
+          - generic [ref=f12e134]:
+            - generic [ref=f12e135]:
+              - heading [level=4] [ref=f12e136]: What's included
+              - list [ref=f12e137]:
+                - listitem [ref=f12e138]: Technical SEO audit
+                - listitem [ref=f12e139]: Keyword research and strategy
+                - listitem [ref=f12e140]: Local business listing optimization
+                - listitem [ref=f12e141]: Content planning and guidelines
+                - listitem [ref=f12e142]: Social media setup and guidance
+            - generic [ref=f12e143]:
+              - heading [level=4] [ref=f12e144]: Who it's for
+              - paragraph [ref=f12e145]: Service businesses and local companies that want to be found when potential customers search for what they offer.
+              - heading [level=4] [ref=f12e146]: The outcome
+              - paragraph [ref=f12e147]: Improved search visibility and a content foundation that helps your business attract and engage the right audience.
+          - link [ref=f12e149] [cursor=pointer]:
+            - /url: /contact?service=seo-digital-marketing
+            - text: Discuss this service
+        - separator [ref=f12e170]
+      - region [ref=f12e171]:
+        - generic [ref=f12e174]:
+          - generic [ref=f12e175]:
+            - generic [ref=f12e176]: "04"
+            - heading [level=2] [ref=f12e177]: AI Automation
+          - paragraph [ref=f12e179]: We build AI-powered tools that handle routine communication and document processing — from chatbots that answer common questions to automated email sequences and document workflows that reduce manual effort.
+          - generic [ref=f12e181]:
+            - generic [ref=f12e182]:
+              - heading [level=4] [ref=f12e183]: What's included
+              - list [ref=f12e184]:
+                - listitem [ref=f12e185]: Custom AI chatbot setup
+                - listitem [ref=f12e186]: Automated email sequences
+                - listitem [ref=f12e187]: Document processing workflows
+                - listitem [ref=f12e188]: Integration with existing tools
+                - listitem [ref=f12e189]: Testing and deployment
+            - generic [ref=f12e190]:
+              - heading [level=4] [ref=f12e191]: Who it's for
+              - paragraph [ref=f12e192]: Businesses spending too much time on repetitive communication, document handling, or manual follow-ups.
+              - heading [level=4] [ref=f12e193]: The outcome
+              - paragraph [ref=f12e194]: Automated workflows that handle routine tasks, freeing your team to focus on work that requires a human touch.
+          - link [ref=f12e196] [cursor=pointer]:
+            - /url: /contact?service=ai-automation
+            - text: Discuss this service
+        - separator [ref=f12e216]
+      - region [ref=f12e217]:
+        - generic [ref=f12e220]:
+          - generic [ref=f12e221]:
+            - generic [ref=f12e222]: "05"
+            - heading [level=2] [ref=f12e223]: CRM & Workflow Automation
+          - paragraph [ref=f12e225]: We set up CRM systems and workflow automations that track leads, trigger follow-ups, and keep your sales process moving — across email, WhatsApp, and the tools your team already uses.
+          - generic [ref=f12e227]:
+            - generic [ref=f12e228]:
+              - heading [level=4] [ref=f12e229]: What's included
+              - list [ref=f12e230]:
+                - listitem [ref=f12e231]: CRM setup and configuration
+                - listitem [ref=f12e232]: Lead tracking pipeline
+                - listitem [ref=f12e233]: Automated follow-up sequences
+                - listitem [ref=f12e234]: WhatsApp and email integration
+                - listitem [ref=f12e235]: Sales process documentation
+            - generic [ref=f12e236]:
+              - heading [level=4] [ref=f12e237]: Who it's for
+              - paragraph [ref=f12e238]: Growing businesses that need to organize their leads, automate follow-ups, and build a repeatable sales process.
+              - heading [level=4] [ref=f12e239]: The outcome
+              - paragraph [ref=f12e240]: A structured pipeline that captures leads, follows up consistently, and helps your team close more business.
+          - link [ref=f12e242] [cursor=pointer]:
+            - /url: /contact?service=crm-workflow-automation
+            - text: Discuss this service
+        - separator [ref=f12e263]
+      - region [ref=f12e264]:
+        - generic [ref=f12e267]:
+          - generic [ref=f12e268]:
+            - generic [ref=f12e269]: "06"
+            - heading [level=2] [ref=f12e270]: Business Analytics
+          - paragraph [ref=f12e272]: We build dashboards and reporting systems that turn your business data into clear, actionable insights. From KPI tracking to automated reports, we help you see what's working and where to focus next.
+          - generic [ref=f12e274]:
+            - generic [ref=f12e275]:
+              - heading [level=4] [ref=f12e276]: What's included
+              - list [ref=f12e277]:
+                - listitem [ref=f12e278]: Custom dashboard design
+                - listitem [ref=f12e279]: KPI tracking setup
+                - listitem [ref=f12e280]: Automated report generation
+                - listitem [ref=f12e281]: Data visualization
+                - listitem [ref=f12e282]: Performance monitoring
+            - generic [ref=f12e283]:
+              - heading [level=4] [ref=f12e284]: Who it's for
+              - paragraph [ref=f12e285]: Business owners and teams who need clear visibility into performance metrics without manually building spreadsheets.
+              - heading [level=4] [ref=f12e286]: The outcome
+              - paragraph [ref=f12e287]: Visual dashboards and automated reports that give you a clear picture of business performance and guide better decisions.
+          - link [ref=f12e289] [cursor=pointer]:
+            - /url: /contact?service=business-analytics
+            - text: Discuss this service
+      - region [ref=f12e316]:
+        - generic [ref=f12e317]:
+          - heading [level=2] [ref=f12e319]: Not sure which service you need?
+          - paragraph [ref=f12e321]: Tell us about your business and goals — we'll help you figure out where to start.
+          - link [ref=f12e323] [cursor=pointer]:
+            - /url: /contact
+            - text: Start a conversation
+    - contentinfo [ref=f12e326]:
+      - generic [aria-hidden]: ResolveOPS
+      - generic [ref=f12e327]:
+        - generic [ref=f12e329]:
+          - generic [ref=f12e330]:
+            - generic [ref=f12e333]:
+              - generic [ref=f12e334]: ResolveOPS
+              - generic [ref=f12e335]: GROWTH STUDIO
+            - paragraph [ref=f12e336]: We Design. We Develop. We Grow.
+            - paragraph [ref=f12e337]: We bring design, development, marketing, automation, and analytics together — built around your business goals.
+          - generic [ref=f12e338]:
+            - heading [level=4] [ref=f12e339]: EXPLORE
+            - list [ref=f12e340]:
+              - listitem [ref=f12e341]:
+                - link [ref=f12e342] [cursor=pointer]:
+                  - /url: /
+                  - text: Home
+              - listitem [ref=f12e343]:
+                - link [ref=f12e344] [cursor=pointer]:
+                  - /url: /services
+                  - text: Services
+              - listitem [ref=f12e345]:
+                - link [ref=f12e346] [cursor=pointer]:
+                  - /url: /work
+                  - text: Work
+              - listitem [ref=f12e347]:
+                - link [ref=f12e348] [cursor=pointer]:
+                  - /url: /about
+                  - text: About
+              - listitem [ref=f12e349]:
+                - link [ref=f12e350] [cursor=pointer]:
+                  - /url: /contact
+                  - text: Contact
+          - generic [ref=f12e351]:
+            - heading [level=4] [ref=f12e352]: SELECTED WORK
+            - list [ref=f12e353]:
+              - listitem [ref=f12e354]:
+                - link [ref=f12e355] [cursor=pointer]:
+                  - /url: https://ymta-dental-clinic.vercel.app/
+                  - text: YMTA Dental Clinic
+              - listitem [ref=f12e356]:
+                - link [ref=f12e357] [cursor=pointer]:
+                  - /url: https://sindhus-multispeciality-dental-clin.vercel.app/
+                  - text: Sindhu's Multispeciality Dental Clinic
+              - listitem [ref=f12e358]:
+                - link [ref=f12e359] [cursor=pointer]:
+                  - /url: https://maruthi-fitness.vercel.app/
+                  - text: Maruthi Fitness
+          - generic [ref=f12e360]:
+            - heading [level=4] [ref=f12e361]: CONTACT
+            - list [ref=f12e362]:
+              - listitem [ref=f12e363]:
+                - link [ref=f12e364] [cursor=pointer]:
+                  - /url: mailto:resolveops.growthstudio@gmail.com
+                  - generic [ref=f12e367]: resolveops.growthstudio@gmail.com
+              - listitem [ref=f12e368]:
+                - link [ref=f12e369] [cursor=pointer]:
+                  - /url: https://www.instagram.com/resolveops.growthstudio/
+                  - generic [ref=f12e372]: Instagram
+        - generic [ref=f12e374]:
+          - paragraph [ref=f12e375]: © 2026 ResolveOPS
+          - button [ref=f12e376] [cursor=pointer]:
+            - generic [ref=f12e379]: Back to top
+    - button [ref=f12e381] [cursor=pointer]:
+      - generic [ref=f12e384]: Ask RØVA

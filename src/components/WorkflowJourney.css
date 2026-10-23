@@ -1,4 +1,4 @@
-﻿/* ── Workflow Journey / Process Section ───────────────────── */
+/* ── Workflow Journey / Process Section ───────────────────── */
 
 .workflow-journey {
   display: grid;
@@ -122,7 +122,7 @@
   border-radius: 24px;
   padding: 34px 38px;
   min-height: 440px;
-  overflow: visible;
+  overflow: hidden;
   box-sizing: border-box;
   transition: transform 0.38s ease, box-shadow 0.35s ease, border-color 0.25s ease;
   margin-top: 25px; /* Aligns top border of card with top border of 01 Discover */
@@ -262,7 +262,7 @@
 
 @media (max-width: 860px) {
   .workflow-journey {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 24px;
   }
 

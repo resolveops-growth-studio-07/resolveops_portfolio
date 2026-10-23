@@ -1,0 +1,118 @@
+- generic [ref=f3e2]:
+  - status "Loading Resolveops" [ref=f3e3]:
+    - generic [aria-hidden] [ref=f3e10]: Resolveops
+  - generic [aria-hidden] [ref=f3e11]:
+    - banner:
+      - generic [ref=f3e12]:
+        - link [ref=f3e13] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f3e15]:
+            - generic [ref=f3e16]: ResolveOPS
+            - generic [ref=f3e17]: Growth studio
+        - button [ref=f3e19] [cursor=pointer]
+    - main [ref=f3e22]:
+      - region [ref=f3e23]:
+        - generic [ref=f3e24]:
+          - heading [level=1] [ref=f3e26]: Our work
+          - paragraph [ref=f3e28]: Real projects for real businesses. Each website is live, functional, and built to serve the specific needs of the business it represents.
+      - region [ref=f3e29]:
+        - generic [ref=f3e31]:
+          - article [ref=f3e33]:
+            - link [ref=f3e34] [cursor=pointer]:
+              - /url: https://ymta-dental-clinic.vercel.app/
+              - generic [ref=f3e35]:
+                - generic [ref=f3e41]: ymta-dental-clinic.vercel.app
+                - generic [ref=f3e49]: View project showcase
+              - generic [ref=f3e51]:
+                - generic [ref=f3e52]: Website Development
+                - heading [level=3] [ref=f3e53]: YMTA Dental Clinic
+          - article [ref=f3e55]:
+            - link [ref=f3e56] [cursor=pointer]:
+              - /url: https://sindhus-multispeciality-dental-clin.vercel.app/
+              - generic [ref=f3e57]:
+                - generic [ref=f3e63]: sindhus-multispeciality-dental-clin.vercel.app
+                - generic [ref=f3e71]: View live website
+              - generic [ref=f3e73]:
+                - generic [ref=f3e74]: Website Development
+                - heading [level=3] [ref=f3e75]: Sindhu's Multispeciality Dental Clinic
+          - article [ref=f3e77]:
+            - link [ref=f3e78] [cursor=pointer]:
+              - /url: https://maruthi-fitness.vercel.app/
+              - generic [ref=f3e79]:
+                - generic [ref=f3e85]: maruthi-fitness.vercel.app
+                - generic [ref=f3e93]: View live website
+              - generic [ref=f3e95]:
+                - generic [ref=f3e96]: Website Development
+                - heading [level=3] [ref=f3e97]: Maruthi Fitness
+      - region [ref=f3e98]:
+        - generic [ref=f3e99]:
+          - heading [level=2] [ref=f3e101]: Have a project in mind?
+          - paragraph [ref=f3e103]: We'd like to hear about your business and what you're looking to build.
+          - link [ref=f3e105] [cursor=pointer]:
+            - /url: /contact
+            - text: Start a project
+    - contentinfo [ref=f3e108]:
+      - generic [aria-hidden]: ResolveOPS
+      - generic [ref=f3e109]:
+        - generic [ref=f3e111]:
+          - generic [ref=f3e112]:
+            - generic [ref=f3e115]:
+              - generic [ref=f3e116]: ResolveOPS
+              - generic [ref=f3e117]: GROWTH STUDIO
+            - paragraph [ref=f3e118]: We Design. We Develop. We Grow.
+            - paragraph [ref=f3e119]: We bring design, development, marketing, automation, and analytics together — built around your business goals.
+          - generic [ref=f3e120]:
+            - heading [level=4] [ref=f3e121]: EXPLORE
+            - list [ref=f3e122]:
+              - listitem [ref=f3e123]:
+                - link [ref=f3e124] [cursor=pointer]:
+                  - /url: /
+                  - text: Home
+              - listitem [ref=f3e125]:
+                - link [ref=f3e126] [cursor=pointer]:
+                  - /url: /services
+                  - text: Services
+              - listitem [ref=f3e127]:
+                - link [ref=f3e128] [cursor=pointer]:
+                  - /url: /work
+                  - text: Work
+              - listitem [ref=f3e129]:
+                - link [ref=f3e130] [cursor=pointer]:
+                  - /url: /about
+                  - text: About
+              - listitem [ref=f3e131]:
+                - link [ref=f3e132] [cursor=pointer]:
+                  - /url: /contact
+                  - text: Contact
+          - generic [ref=f3e133]:
+            - heading [level=4] [ref=f3e134]: SELECTED WORK
+            - list [ref=f3e135]:
+              - listitem [ref=f3e136]:
+                - link [ref=f3e137] [cursor=pointer]:
+                  - /url: https://ymta-dental-clinic.vercel.app/
+                  - text: YMTA Dental Clinic
+              - listitem [ref=f3e138]:
+                - link [ref=f3e139] [cursor=pointer]:
+                  - /url: https://sindhus-multispeciality-dental-clin.vercel.app/
+                  - text: Sindhu's Multispeciality Dental Clinic
+              - listitem [ref=f3e140]:
+                - link [ref=f3e141] [cursor=pointer]:
+                  - /url: https://maruthi-fitness.vercel.app/
+                  - text: Maruthi Fitness
+          - generic [ref=f3e142]:
+            - heading [level=4] [ref=f3e143]: CONTACT
+            - list [ref=f3e144]:
+              - listitem [ref=f3e145]:
+                - link [ref=f3e146] [cursor=pointer]:
+                  - /url: mailto:resolveops.growthstudio@gmail.com
+                  - generic [ref=f3e149]: resolveops.growthstudio@gmail.com
+              - listitem [ref=f3e150]:
+                - link [ref=f3e151] [cursor=pointer]:
+                  - /url: https://www.instagram.com/resolveops.growthstudio/
+                  - generic [ref=f3e154]: Instagram
+        - generic [ref=f3e156]:
+          - paragraph [ref=f3e157]: © 2026 ResolveOPS
+          - button [ref=f3e158] [cursor=pointer]:
+            - generic [ref=f3e161]: Back to top
+    - button [ref=f3e163] [cursor=pointer]:
+      - generic [ref=f3e166]: Ask RØVA

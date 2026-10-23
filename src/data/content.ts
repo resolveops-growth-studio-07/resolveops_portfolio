@@ -271,9 +271,9 @@ export const processSteps: ProcessStep[] = [
 
 export const budgetOptions = [
   'Under ₹10,000',
-  '₹10,000 – ₹25,000',
-  '₹25,000 – ₹50,000',
-  '₹50,000 – ₹1,00,000',
+  '₹10,000 — ₹25,000',
+  '₹25,000 — ₹50,000',
+  '₹50,000 — ₹1,00,000',
   'Above ₹1,00,000',
   'Not sure yet',
 ] as const;

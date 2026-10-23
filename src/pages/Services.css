@@ -112,13 +112,13 @@
 
 .service-block-layout {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
   gap: var(--space-4xl);
   align-items: start;
 }
 
 .service-block-layout.reversed {
-  grid-template-columns: 0.8fr 1.2fr;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
 }
 
 .service-block-layout.reversed .service-block-content {
@@ -360,7 +360,7 @@
 
   .service-block-layout,
   .service-block-layout.reversed {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-2xl);
   }
 
@@ -375,12 +375,30 @@
   }
 
   .service-details-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .next-strip {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--space-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .services-hero-title {
+    font-size: var(--text-3xl);
+  }
+  .service-block-title {
+    font-size: var(--text-2xl);
+  }
+  .service-block-visual {
+    padding: var(--space-md);
+  }
+  .svc-progress {
+    padding: var(--space-md);
+    gap: 8px;
+    overflow-x: auto;
+    justify-content: flex-start;
   }
 }

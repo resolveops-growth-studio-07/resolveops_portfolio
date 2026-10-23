@@ -1,4 +1,4 @@
-﻿/* ── Site Footer ────────────────────────────────────────── */
+/* ── Site Footer ────────────────────────────────────────── */
 
 .site-footer {
   position: relative;
@@ -44,7 +44,7 @@
 
 .footer-top {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1.2fr 1.3fr;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1.2fr) minmax(0, 1.3fr);
   gap: var(--space-3xl);
   padding-bottom: var(--space-2xl);
 }
@@ -52,6 +52,7 @@
 /* ── Brand Column ─────────────────────────────────────────── */
 
 .footer-brand {
+  min-width: 0;
   max-width: 360px;
 }
 
@@ -214,7 +215,7 @@
 
 @media (max-width: 960px) {
   .footer-top {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-2xl);
   }
 }
@@ -222,11 +223,11 @@
 @media (max-width: 600px) {
   .site-footer {
     padding-top: 40px;
-    padding-bottom: 28px;
+    padding-bottom: calc(max(32px, env(safe-area-inset-bottom, 32px)) + 56px);
   }
 
   .footer-top {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-xl);
   }
 

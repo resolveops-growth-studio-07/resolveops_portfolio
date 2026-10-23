@@ -26,6 +26,13 @@
   letter-spacing: -0.03em;
   line-height: 1.08;
   margin-bottom: var(--space-lg);
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: var(--text-3xl);
+  }
 }
 
 .section-subtitle {

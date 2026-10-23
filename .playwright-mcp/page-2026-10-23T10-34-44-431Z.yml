@@ -1,0 +1,240 @@
+- generic [ref=f6e2]:
+  - status "Loading Resolveops" [ref=f6e3]:
+    - generic [aria-hidden] [ref=f6e10]: Resolveops
+  - generic [aria-hidden] [ref=f6e11]:
+    - banner:
+      - generic [ref=f6e12]:
+        - link [ref=f6e13] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f6e15]:
+            - generic [ref=f6e16]: ResolveOPS
+            - generic [ref=f6e17]: Growth studio
+        - button [ref=f6e19] [cursor=pointer]
+    - main [ref=f6e22]:
+      - region [ref=f6e23]:
+        - button [ref=f6e25] [cursor=pointer]: Pause Core
+        - generic [ref=f6e26]:
+          - generic [ref=f6e27]: ResolveOPS / Growth studio
+          - heading [level=1] [ref=f6e30]:
+            - text: We Design. We Develop. We
+            - generic [ref=f6e31]: Grow.
+          - paragraph [ref=f6e33]: We build websites, automate everyday workflows, and turn business data into clear dashboards—helping businesses attract enquiries and run more efficiently.
+          - generic [ref=f6e35]:
+            - link [ref=f6e36] [cursor=pointer]:
+              - /url: /contact
+              - text: Start a project
+            - link [ref=f6e39] [cursor=pointer]:
+              - /url: /work
+              - text: Explore our work
+          - link [ref=f6e41] [cursor=pointer]:
+            - /url: mailto:resolveops.growthstudio@gmail.com
+            - text: resolveops.growthstudio@gmail.com
+      - region [ref=f6e44]:
+        - generic [ref=f6e47]:
+          - generic [ref=f6e48]: The Studio
+          - heading [level=2] [ref=f6e49]:
+            - generic [ref=f6e50]: We bring design, development, marketing, automation,
+            - generic [ref=f6e51]: and analytics together —
+            - generic [ref=f6e53]:
+              - generic [ref=f6e54]: built
+              - generic [ref=f6e55]: around
+              - generic [ref=f6e56]: your
+              - generic [ref=f6e57]: business
+              - generic [ref=f6e58]: goals.
+          - paragraph [ref=f6e59]:
+            - text: ResolveOPS is a technology and growth studio building
+            - strong [ref=f6e60]: websites, automations and reporting tools
+            - text: around practical business needs. We handle the technical work so you can focus on running your business.
+      - region [ref=f6e61]:
+        - generic [ref=f6e62]:
+          - generic [ref=f6e63]:
+            - generic [ref=f6e64]:
+              - text: Six disciplines. One studio.
+              - heading [level=2] [ref=f6e65]: What we do
+            - link [ref=f6e66] [cursor=pointer]:
+              - /url: /services
+              - text: Explore our services
+          - generic [ref=f6e69]:
+            - generic [aria-hidden]: Web Development
+            - region [ref=f6e71]
+          - generic [ref=f6e73]:
+            - generic [ref=f6e74]: Drag to explore · 01 / 06
+            - generic [ref=f6e75]:
+              - button [ref=f6e76] [cursor=pointer]
+              - button [ref=f6e79] [cursor=pointer]
+          - group [ref=f6e82]:
+            - button [pressed] [ref=f6e83] [cursor=pointer]: 01 Website Development
+            - button [ref=f6e84] [cursor=pointer]: 02 UI/UX & Conversion Optimization
+            - button [ref=f6e85] [cursor=pointer]: 03 SEO & Digital Marketing
+            - button [ref=f6e86] [cursor=pointer]: 04 AI Automation
+            - button [ref=f6e87] [cursor=pointer]: 05 CRM & Workflow Automation
+            - button [ref=f6e88] [cursor=pointer]: 06 Business Analytics
+          - article [ref=f6e89]:
+            - generic [ref=f6e90]:
+              - text: Your next advantage
+              - heading [level=3] [ref=f6e91]: Website Development
+              - paragraph [ref=f6e92]: Modern, responsive websites and landing pages built to represent your business clearly and perform across every device.
+              - link [ref=f6e93] [cursor=pointer]:
+                - /url: /contact?service=website-development
+                - text: Discuss this service
+            - generic [ref=f6e96]:
+              - list [ref=f6e97]:
+                - listitem [ref=f6e98]: Business websites
+                - listitem [ref=f6e99]: Landing pages
+                - listitem [ref=f6e100]: Responsive design
+                - listitem [ref=f6e101]: Web applications
+              - paragraph [ref=f6e102]: A fast, professional website that represents your business clearly and helps visitors take the next step.
+      - region [ref=f6e103]:
+        - generic [ref=f6e104]:
+          - generic [ref=f6e105]:
+            - heading [level=2] [ref=f6e107]: Selected work
+            - paragraph [ref=f6e109]: Real projects, live websites â€” built for businesses that needed a clear, professional web presence.
+          - generic [ref=f6e110]:
+            - article [ref=f6e112]:
+              - link [ref=f6e113] [cursor=pointer]:
+                - /url: https://ymta-dental-clinic.vercel.app/
+                - generic [ref=f6e114]:
+                  - generic [ref=f6e120]: ymta-dental-clinic.vercel.app
+                  - generic [ref=f6e128]: View project showcase
+                - generic [ref=f6e130]:
+                  - generic [ref=f6e131]: Website Development
+                  - heading [level=3] [ref=f6e132]: YMTA Dental Clinic
+            - article [ref=f6e134]:
+              - link [ref=f6e135] [cursor=pointer]:
+                - /url: https://sindhus-multispeciality-dental-clin.vercel.app/
+                - generic [ref=f6e136]:
+                  - generic [ref=f6e142]: sindhus-multispeciality-dental-clin.vercel.app
+                  - generic [ref=f6e150]: View live website
+                - generic [ref=f6e152]:
+                  - generic [ref=f6e153]: Website Development
+                  - heading [level=3] [ref=f6e154]: Sindhu's Multispeciality Dental Clinic
+            - article [ref=f6e156]:
+              - link [ref=f6e157] [cursor=pointer]:
+                - /url: https://maruthi-fitness.vercel.app/
+                - generic [ref=f6e158]:
+                  - generic [ref=f6e164]: maruthi-fitness.vercel.app
+                  - generic [ref=f6e172]: View live website
+                - generic [ref=f6e174]:
+                  - generic [ref=f6e175]: Website Development
+                  - heading [level=3] [ref=f6e176]: Maruthi Fitness
+          - link [ref=f6e179] [cursor=pointer]:
+            - /url: /work
+            - text: View all projects
+      - region [ref=f6e182]:
+        - generic [ref=f6e183]:
+          - generic [ref=f6e184]:
+            - heading [level=2] [ref=f6e186]: How we work
+            - paragraph [ref=f6e188]: A focused process that moves from understanding to results.
+          - generic [ref=f6e189]:
+            - generic [ref=f6e190]:
+              - generic [ref=f6e191]: From the first conversation
+              - list [ref=f6e192]:
+                - listitem [ref=f6e193]:
+                  - button [pressed] [ref=f6e194] [cursor=pointer]:
+                    - generic [ref=f6e195]: "01"
+                    - generic [ref=f6e196]: Discover
+                - listitem [ref=f6e199]:
+                  - button [ref=f6e200] [cursor=pointer]:
+                    - generic [ref=f6e201]: "02"
+                    - generic [ref=f6e202]: Define
+                - listitem [ref=f6e205]:
+                  - button [ref=f6e206] [cursor=pointer]:
+                    - generic [ref=f6e207]: "03"
+                    - generic [ref=f6e208]: Design & Build
+                - listitem [ref=f6e211]:
+                  - button [ref=f6e212] [cursor=pointer]:
+                    - generic [ref=f6e213]: "04"
+                    - generic [ref=f6e214]: Test & Launch
+                - listitem [ref=f6e217]:
+                  - button [ref=f6e218] [cursor=pointer]:
+                    - generic [ref=f6e219]: "05"
+                    - generic [ref=f6e220]: Improve
+              - generic [ref=f6e223]: To a better way forward
+            - article [ref=f6e224]:
+              - generic [aria-hidden]: "01"
+              - generic [ref=f6e225]: Phase 01 / 05
+              - generic [ref=f6e230]:
+                - heading [level=3] [ref=f6e231]: Discover
+                - paragraph [ref=f6e232]: We learn about your business, your audience, and what success looks like for this project.
+                - generic [ref=f6e233]:
+                  - generic [ref=f6e234]: What we focus on
+                  - list [ref=f6e235]:
+                    - listitem [ref=f6e236]:
+                      - generic [ref=f6e239]: Your goals and audience
+                    - listitem [ref=f6e240]:
+                      - generic [ref=f6e243]: The problem to solve
+                    - listitem [ref=f6e244]:
+                      - generic [ref=f6e247]: A clear starting point
+              - button [ref=f6e255] [cursor=pointer]: Next phase
+      - region [ref=f6e258]:
+        - generic [ref=f6e259]:
+          - generic [ref=f6e260]: HAVE A PROJECT IN MIND?
+          - heading [level=2] [ref=f6e262]: Let's build something that helps your business grow.
+          - link [ref=f6e265] [cursor=pointer]:
+            - /url: /contact
+            - text: Start a project
+    - contentinfo [ref=f6e268]:
+      - generic [aria-hidden]: ResolveOPS
+      - generic [ref=f6e269]:
+        - generic [ref=f6e271]:
+          - generic [ref=f6e272]:
+            - generic [ref=f6e275]:
+              - generic [ref=f6e276]: ResolveOPS
+              - generic [ref=f6e277]: GROWTH STUDIO
+            - paragraph [ref=f6e278]: We Design. We Develop. We Grow.
+            - paragraph [ref=f6e279]: We bring design, development, marketing, automation, and analytics together — built around your business goals.
+          - generic [ref=f6e280]:
+            - heading [level=4] [ref=f6e281]: EXPLORE
+            - list [ref=f6e282]:
+              - listitem [ref=f6e283]:
+                - link [ref=f6e284] [cursor=pointer]:
+                  - /url: /
+                  - text: Home
+              - listitem [ref=f6e285]:
+                - link [ref=f6e286] [cursor=pointer]:
+                  - /url: /services
+                  - text: Services
+              - listitem [ref=f6e287]:
+                - link [ref=f6e288] [cursor=pointer]:
+                  - /url: /work
+                  - text: Work
+              - listitem [ref=f6e289]:
+                - link [ref=f6e290] [cursor=pointer]:
+                  - /url: /about
+                  - text: About
+              - listitem [ref=f6e291]:
+                - link [ref=f6e292] [cursor=pointer]:
+                  - /url: /contact
+                  - text: Contact
+          - generic [ref=f6e293]:
+            - heading [level=4] [ref=f6e294]: SELECTED WORK
+            - list [ref=f6e295]:
+              - listitem [ref=f6e296]:
+                - link [ref=f6e297] [cursor=pointer]:
+                  - /url: https://ymta-dental-clinic.vercel.app/
+                  - text: YMTA Dental Clinic
+              - listitem [ref=f6e298]:
+                - link [ref=f6e299] [cursor=pointer]:
+                  - /url: https://sindhus-multispeciality-dental-clin.vercel.app/
+                  - text: Sindhu's Multispeciality Dental Clinic
+              - listitem [ref=f6e300]:
+                - link [ref=f6e301] [cursor=pointer]:
+                  - /url: https://maruthi-fitness.vercel.app/
+                  - text: Maruthi Fitness
+          - generic [ref=f6e302]:
+            - heading [level=4] [ref=f6e303]: CONTACT
+            - list [ref=f6e304]:
+              - listitem [ref=f6e305]:
+                - link [ref=f6e306] [cursor=pointer]:
+                  - /url: mailto:resolveops.growthstudio@gmail.com
+                  - generic [ref=f6e309]: resolveops.growthstudio@gmail.com
+              - listitem [ref=f6e310]:
+                - link [ref=f6e311] [cursor=pointer]:
+                  - /url: https://www.instagram.com/resolveops.growthstudio/
+                  - generic [ref=f6e314]: Instagram
+        - generic [ref=f6e316]:
+          - paragraph [ref=f6e317]: © 2026 ResolveOPS
+          - button [ref=f6e318] [cursor=pointer]:
+            - generic [ref=f6e321]: Back to top
+    - button [ref=f6e323] [cursor=pointer]:
+      - generic [ref=f6e326]: Ask RØVA

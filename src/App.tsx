@@ -52,25 +52,25 @@ export default function App() {
         <WelcomeOrbLoader onComplete={handleLoaderComplete} />
       )}
       <div inert={showLoader} aria-hidden={showLoader ? true : undefined}>
-      <BrowserRouter>
-        <ScrollToTop />
-        <PageTitleUpdater />
-        <BorderGlow />
-        <SpecularButtons />
-        <SiteHeader />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/work" element={<Work />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </main>
-        <SiteFooter />
-        <RovaChat />
-      </BrowserRouter>
+        <BrowserRouter>
+          <ScrollToTop />
+          <PageTitleUpdater />
+          <BorderGlow />
+          <SpecularButtons />
+          <SiteHeader />
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/work" element={<Work />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
+          <SiteFooter />
+          <RovaChat />
+        </BrowserRouter>
       </div>
     </>
   );

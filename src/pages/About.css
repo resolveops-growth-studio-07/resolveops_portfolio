@@ -1,4 +1,4 @@
-﻿/* â”€â”€ About Page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── About Page ─────────────────────────────────── */
 
 .about-hero {
   position: relative;          /* establish stacking context for the canvas */
@@ -8,7 +8,7 @@
   border-bottom: 1px solid var(--border-subtle);
 }
 
-/* Network canvas wrapper â€” compact decorative cluster, right-center */
+/* Network canvas wrapper — compact decorative cluster, right-center */
 .about-network-bg {
   position: absolute;
   top: 50%;
@@ -40,7 +40,7 @@
   line-height: 1.7;
 }
 
-/* â”€â”€ Philosophy â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Philosophy ──────────────────────────────────── */
 
 .about-philosophy {
   background: var(--bg-raised);
@@ -49,7 +49,7 @@
 
 .philosophy-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-2xl);
 }
 
@@ -84,7 +84,7 @@
   line-height: 1.75;
 }
 
-/* â”€â”€ Process â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Process ─────────────────────────────────────── */
 
 .about-process-header {
   text-align: center;
@@ -98,7 +98,7 @@
   margin-bottom: 0;
 }
 
-/* â”€â”€ Values â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Values ──────────────────────────────────────── */
 
 .about-values {
   background: var(--bg-raised);
@@ -107,7 +107,7 @@
 
 .values-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-xl);
   margin-top: var(--space-3xl);
 }
@@ -142,13 +142,13 @@
   line-height: 1.7;
 }
 
-/* â”€â”€ CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── CTA ─────────────────────────────────────────── */
 
 .about-cta {
   border-top: 1px solid var(--border-subtle);
 }
 
-/* â”€â”€ Responsive â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Responsive ──────────────────────────────────── */
 
 @media (max-width: 768px) {
   .about-hero {
@@ -160,11 +160,21 @@
   }
 
   .philosophy-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .values-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .about-hero-title {
+    font-size: var(--text-3xl);
+  }
+  .philosophy-item,
+  .value-card {
+    padding: var(--space-lg);
   }
 }
 

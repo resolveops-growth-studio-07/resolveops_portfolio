@@ -53,13 +53,15 @@ export default function Reveal({
 
   const getTransform = () => {
     if (direction === 'none') return 'none';
+    const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches;
+    const effectiveDirection = isMobile && (direction === 'left' || direction === 'right') ? 'up' : direction;
     const transforms: Record<string, string> = {
       up: `translateY(${distance}px)`,
       down: `translateY(-${distance}px)`,
       left: `translateX(${distance}px)`,
       right: `translateX(-${distance}px)`,
     };
-    return transforms[direction] || 'none';
+    return transforms[effectiveDirection] || 'none';
   };
 
   return (
@@ -70,6 +72,8 @@ export default function Reveal({
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? 'none' : getTransform(),
         filter: isVisible ? 'blur(0px)' : 'blur(4px)',
+        minWidth: 0,
+        maxWidth: '100%',
         transition: `opacity ${duration}ms var(--spring-snappy) ${delay}ms, 
                      transform ${duration}ms var(--spring-snappy) ${delay}ms,
                      filter ${duration}ms var(--spring-snappy) ${delay}ms`,

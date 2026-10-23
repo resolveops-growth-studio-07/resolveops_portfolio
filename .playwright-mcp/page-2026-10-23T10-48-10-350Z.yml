@@ -1,0 +1,169 @@
+- generic [ref=f8e2]:
+  - status "Loading Resolveops" [ref=f8e3]:
+    - generic [aria-hidden] [ref=f8e10]: Resolveops
+  - generic [aria-hidden] [ref=f8e11]:
+    - banner:
+      - generic [ref=f8e12]:
+        - link [ref=f8e13] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f8e15]:
+            - generic [ref=f8e16]: ResolveOPS
+            - generic [ref=f8e17]: Growth studio
+        - button [ref=f8e19] [cursor=pointer]
+    - main [ref=f8e22]:
+      - region [ref=f8e23]:
+        - generic [ref=f8e24]:
+          - generic [ref=f8e25]:
+            - heading [level=1] [ref=f8e27]: Start a Project with ResolveOPS
+            - paragraph [ref=f8e29]: Tell us what you're looking to build or improve. Whether you have detailed specifications or just an initial idea, we're ready to collaborate.
+          - group [ref=f8e30]:
+            - button [ref=f8e31] [cursor=pointer]: I need a website
+            - button [ref=f8e32] [cursor=pointer]: I want AI automation
+            - button [ref=f8e33] [cursor=pointer]: I need more leads
+            - button [ref=f8e34] [cursor=pointer]: I need analytics
+            - button [ref=f8e35] [cursor=pointer]: Improve my existing website
+            - button [ref=f8e36] [cursor=pointer]: I'm not sure yet
+          - generic [ref=f8e37]:
+            - complementary [ref=f8e39]:
+              - generic [ref=f8e44]:
+                - generic [ref=f8e45]: Official Email
+                - link [ref=f8e46] [cursor=pointer]:
+                  - /url: mailto:resolveops.growthstudio@gmail.com
+                  - text: resolveops.growthstudio@gmail.com
+              - generic [ref=f8e47]:
+                - heading [level=2] [ref=f8e48]: Direct & Transparent Collaboration
+                - list [ref=f8e49]:
+                  - listitem [ref=f8e50]:
+                    - generic [ref=f8e52]: Direct collaboration with experienced engineers and designers — no middle management layers.
+                  - listitem [ref=f8e53]:
+                    - generic [ref=f8e55]: Clear scopes, predictable milestones, and honest recommendations suited for your budget.
+                  - listitem [ref=f8e56]:
+                    - generic [ref=f8e58]: Zero high-pressure sales calls. Submit what you need, and we'll reply directly with actionable steps.
+            - generic [ref=f8e61]:
+              - generic [ref=f8e62]:
+                - generic [ref=f8e63]:
+                  - generic [ref=f8e64]:
+                    - text: YOUR NAME
+                    - generic [aria-hidden] [ref=f8e65]: "*"
+                  - textbox [ref=f8e66]:
+                    - /placeholder: e.g. Alex Rivera
+                - generic [ref=f8e67]:
+                  - generic [ref=f8e68]:
+                    - text: BUSINESS / BRAND NAME
+                    - generic [ref=f8e69]: (OPTIONAL)
+                  - textbox [ref=f8e70]:
+                    - /placeholder: e.g. Apex Solutions
+              - generic [ref=f8e71]:
+                - generic [ref=f8e72]:
+                  - text: EMAIL ADDRESS
+                  - generic [aria-hidden] [ref=f8e73]: "*"
+                - textbox [ref=f8e74]:
+                  - /placeholder: e.g. alex@company.com
+              - generic [ref=f8e75]:
+                - generic [ref=f8e77]:
+                  - text: ESTIMATED PROJECT BUDGET
+                  - generic [ref=f8e78]: (OPTIONAL)
+                - group [ref=f8e79]:
+                  - button [ref=f8e80] [cursor=pointer]:
+                    - generic [ref=f8e81]: Under ₹5000
+                  - button [ref=f8e82] [cursor=pointer]:
+                    - generic [ref=f8e83]: ₹6000 – ₹8000
+                  - button [ref=f8e84] [cursor=pointer]:
+                    - generic [ref=f8e85]: Above ₹10000
+                  - button [ref=f8e86] [cursor=pointer]:
+                    - generic [ref=f8e87]: Not sure yet
+              - generic [ref=f8e88]:
+                - generic [ref=f8e90]:
+                  - text: SERVICES REQUIRED
+                  - generic [ref=f8e91]: (SELECT ALL THAT APPLY)
+                - group [ref=f8e92]:
+                  - checkbox [ref=f8e93] [cursor=pointer]:
+                    - generic [ref=f8e97]: Website Development
+                  - checkbox [ref=f8e98] [cursor=pointer]:
+                    - generic [ref=f8e102]: UI/UX & Conversion Optimization
+                  - checkbox [ref=f8e103] [cursor=pointer]:
+                    - generic [ref=f8e107]: SEO & Digital Marketing
+                  - checkbox [ref=f8e108] [cursor=pointer]:
+                    - generic [ref=f8e112]: AI Automation
+                  - checkbox [ref=f8e113] [cursor=pointer]:
+                    - generic [ref=f8e117]: CRM & Workflow Automation
+                  - checkbox [ref=f8e118] [cursor=pointer]:
+                    - generic [ref=f8e122]: Business Analytics
+                  - checkbox [ref=f8e123] [cursor=pointer]:
+                    - generic [ref=f8e127]: Other
+              - generic [ref=f8e128]:
+                - generic [ref=f8e129]:
+                  - text: PROJECT DESCRIPTION & REQUIREMENTS
+                  - generic [aria-hidden] [ref=f8e130]: "*"
+                - textbox [ref=f8e131]:
+                  - /placeholder: Tell us about your project, goals, requirements, timeline, or any reference websites you have in mind...
+              - generic [ref=f8e132]:
+                - button [ref=f8e133] [cursor=pointer]: Start a conversation
+                - button [ref=f8e136] [cursor=pointer]:
+                  - generic [ref=f8e139]: Copy message instead
+              - paragraph [ref=f8e140]: This opens your email app with your enquiry pre-filled. You can review and send it directly from there. No data is stored on our servers.
+    - contentinfo [ref=f8e141]:
+      - generic [aria-hidden]: ResolveOPS
+      - generic [ref=f8e142]:
+        - generic [ref=f8e144]:
+          - generic [ref=f8e145]:
+            - generic [ref=f8e148]:
+              - generic [ref=f8e149]: ResolveOPS
+              - generic [ref=f8e150]: GROWTH STUDIO
+            - paragraph [ref=f8e151]: We Design. We Develop. We Grow.
+            - paragraph [ref=f8e152]: We bring design, development, marketing, automation, and analytics together — built around your business goals.
+          - generic [ref=f8e153]:
+            - heading [level=4] [ref=f8e154]: EXPLORE
+            - list [ref=f8e155]:
+              - listitem [ref=f8e156]:
+                - link [ref=f8e157] [cursor=pointer]:
+                  - /url: /
+                  - text: Home
+              - listitem [ref=f8e158]:
+                - link [ref=f8e159] [cursor=pointer]:
+                  - /url: /services
+                  - text: Services
+              - listitem [ref=f8e160]:
+                - link [ref=f8e161] [cursor=pointer]:
+                  - /url: /work
+                  - text: Work
+              - listitem [ref=f8e162]:
+                - link [ref=f8e163] [cursor=pointer]:
+                  - /url: /about
+                  - text: About
+              - listitem [ref=f8e164]:
+                - link [ref=f8e165] [cursor=pointer]:
+                  - /url: /contact
+                  - text: Contact
+          - generic [ref=f8e166]:
+            - heading [level=4] [ref=f8e167]: SELECTED WORK
+            - list [ref=f8e168]:
+              - listitem [ref=f8e169]:
+                - link [ref=f8e170] [cursor=pointer]:
+                  - /url: https://ymta-dental-clinic.vercel.app/
+                  - text: YMTA Dental Clinic
+              - listitem [ref=f8e171]:
+                - link [ref=f8e172] [cursor=pointer]:
+                  - /url: https://sindhus-multispeciality-dental-clin.vercel.app/
+                  - text: Sindhu's Multispeciality Dental Clinic
+              - listitem [ref=f8e173]:
+                - link [ref=f8e174] [cursor=pointer]:
+                  - /url: https://maruthi-fitness.vercel.app/
+                  - text: Maruthi Fitness
+          - generic [ref=f8e175]:
+            - heading [level=4] [ref=f8e176]: CONTACT
+            - list [ref=f8e177]:
+              - listitem [ref=f8e178]:
+                - link [ref=f8e179] [cursor=pointer]:
+                  - /url: mailto:resolveops.growthstudio@gmail.com
+                  - generic [ref=f8e182]: resolveops.growthstudio@gmail.com
+              - listitem [ref=f8e183]:
+                - link [ref=f8e184] [cursor=pointer]:
+                  - /url: https://www.instagram.com/resolveops.growthstudio/
+                  - generic [ref=f8e187]: Instagram
+        - generic [ref=f8e189]:
+          - paragraph [ref=f8e190]: © 2026 ResolveOPS
+          - button [ref=f8e191] [cursor=pointer]:
+            - generic [ref=f8e194]: Back to top
+    - button [ref=f8e196] [cursor=pointer]:
+      - generic [ref=f8e199]: Ask RØVA

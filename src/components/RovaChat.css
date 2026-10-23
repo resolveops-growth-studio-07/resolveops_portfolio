@@ -18,7 +18,24 @@
 .rova-compose{position:relative;z-index:2;display:flex;gap:8px;margin:12px 16px 8px;border:1px solid var(--border-strong)!important;border-radius:var(--radius-pill);padding:6px;background:var(--color-surface)!important;box-shadow:none!important;outline:none!important;transition:border-color .2s ease}.rova-compose:hover,.rova-compose:focus-within{border-color:var(--border-strong)!important;box-shadow:none!important;outline:none!important}.rova-compose input{min-width:0;flex:1;padding:8px 8px 8px 12px;border:none!important;background:transparent!important;color:var(--color-highlight)!important;font:inherit;font-size:16px;box-shadow:none!important;outline:none!important}.rova-compose input:hover,.rova-compose input:focus,.rova-compose input:focus-visible{border:none!important;background:transparent!important;box-shadow:none!important;outline:none!important}.rova-compose input::placeholder{color:var(--accent);font-size:13px}.rova-compose button{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--color-highlight);color:var(--color-bg);border:none!important;box-shadow:none!important;outline:none!important;transition:opacity .2s ease}.rova-compose button:hover:not(:disabled){opacity:.88;box-shadow:none!important}.rova-compose button:disabled{opacity:.45;cursor:default}.rova-note{font-size:10px;text-align:center;padding:0 12px 12px;max-width:none}
 .rova-typing{display:flex;gap:5px;padding:20px}.rova-typing i{width:5px;height:5px;border-radius:50%;background:var(--accent);animation:rova-type .7s ease infinite alternate}.rova-typing i:nth-child(2){animation-delay:.15s}.rova-typing i:nth-child(3){animation-delay:.3s}
 @keyframes rova-enter{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}@keyframes rova-exit{to{opacity:0;transform:translateY(6px)}}@keyframes rova-type{to{opacity:.3}}
-@media(max-width:600px){.rova-root{right:max(14px,env(safe-area-inset-right));bottom:max(14px,env(safe-area-inset-bottom))}.rova-panel{position:fixed;left:10px;right:10px;bottom:max(10px,env(safe-area-inset-bottom));width:auto;height:min(700px,calc(100dvh - 90px));max-height:calc(100dvh - 90px)}.rova-scroll{padding:20px}.rova-launcher{padding:12px 16px}}
+@media(max-width:600px){
+  .rova-root{right:max(12px,env(safe-area-inset-right,12px));bottom:max(12px,env(safe-area-inset-bottom,12px))}
+  .rova-launcher{padding:9px 13px;min-height:38px;font-size:13px;gap:7px}
+  .rova-launcher svg{width:18px;height:18px}
+  .rova-panel{position:fixed;left:max(8px,env(safe-area-inset-left,8px));right:max(8px,env(safe-area-inset-right,8px));bottom:max(8px,env(safe-area-inset-bottom,8px));width:auto;height:min(600px,calc(100dvh - 76px));max-height:calc(100dvh - 76px);border-radius:var(--radius-lg)}
+  .rova-header{padding:14px 16px}
+  .rova-header h2{font-size:20px}
+  .rova-scroll{padding:16px 14px}
+  .rova-welcome>p{font-size:20px;margin:12px 0 8px}
+  .rova-quick-btn{padding:10px 12px;font-size:12.5px}
+  .rova-compose{margin:8px 10px 6px}
+  .rova-compose input{font-size:15px;padding:6px 8px 6px 10px}
+}
+@media(max-width:360px){
+  .rova-root{right:max(8px,env(safe-area-inset-right,8px));bottom:max(8px,env(safe-area-inset-bottom,8px))}
+  .rova-launcher{padding:7px 11px;min-height:36px;font-size:12px;gap:5px}
+  .rova-panel{left:4px;right:4px;bottom:4px}
+}
 @media(prefers-reduced-motion:reduce){.rova-panel,.rova-message,.rova-rotating span,.rova-typing i{animation:none}.rova-launcher{transition:none}}
 
 

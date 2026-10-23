@@ -1,4 +1,4 @@
-﻿import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ArrowRight, EnvelopeSimple } from '@phosphor-icons/react';
 import { brand, projects, processSteps } from '../data/content';
 import Reveal from '../components/Reveal';
@@ -13,7 +13,7 @@ import './Home.css';
 export default function Home() {
   return (
     <>
-      {/* â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ── Hero ─────────────────────────────────────────── */}
       <section className="hero" aria-label="Hero">
         <DigitalCore />
         <div className="container hero-container">
@@ -58,18 +58,18 @@ export default function Home() {
         <div className="hero-gradient" aria-hidden="true" />
       </section>
 
-      {/* â”€â”€ Studio Introduction â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ── Studio Introduction ──────────────────────────── */}
       <StudioIntro />
 
-      {/* â”€â”€ Services â€” Animated Stage â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ── Services — Animated Stage ───────────────────── */}
       <ServiceCardStage />
 
-      {/* â”€â”€ Selected Work â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ── Selected Work ─────────────────────────────────── */}
       <section className="section work-section" aria-label="Selected work">
         <div className="container">
           <SectionHeading
             title="Selected work"
-            subtitle="Real projects, live websites â€” built for businesses that needed a clear, professional web presence."
+            subtitle="Real projects, live websites — built for businesses that needed a clear, professional web presence."
           />
           <div className="work-grid">
             {projects.map((project, i) => (
@@ -86,7 +86,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* â”€â”€ Process â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ── Process ──────────────────────────────────────── */}
       <section className="section process-section" aria-label="Our process">
         <div className="container">
           <SectionHeading
@@ -98,7 +98,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* â”€â”€ Closing CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ── Closing CTA ──────────────────────────────────── */}
       <section className="section cta-section" aria-label="Get started">
         <div className="container cta-container">
           <Reveal>
