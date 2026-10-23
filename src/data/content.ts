@@ -203,7 +203,7 @@ export const projects: Project[] = [
     category: 'Website Development',
     description:
       '**Status:** Project showcase\n**Objective:** Present treatments and clinic information clearly to prospective patients.\n**Constraints:** Required a fast, mobile-friendly design reflecting a professional healthcare environment.\n**Contribution:** Full design and development.\n**Features:** Interactive treatment sections, responsive layouts, and direct appointment enquiry pathways.\n**Outcome:** A professional web presence built for patient conversion.',
-    url: 'https://ymta-dental-clinic-demo.vercel.app/',
+    url: 'https://ymta-dental-clinic.vercel.app/',
     urlLabel: 'View project showcase',
     image: '/projects/ymta-real.png',
     alt: 'YMTA Dental Clinic live website homepage showing dental treatments and appointment booking in Coimbatore',

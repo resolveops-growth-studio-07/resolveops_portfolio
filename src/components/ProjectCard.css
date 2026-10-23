@@ -86,9 +86,12 @@
 }
 
 .browser-ssl-lock {
-  font-size: 10px;
-  opacity: 0.5;
-  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  opacity: 0.7;
+  flex-shrink: 0;
 }
 
 .browser-url-text {
@@ -204,7 +207,7 @@
   font-size: var(--text-2xl);
   font-weight: 600;
   letter-spacing: -0.02em;
-  margin-bottom: var(--space-md);
+  margin-bottom: 0;
   line-height: 1.25;
   color: var(--text-primary);
 }

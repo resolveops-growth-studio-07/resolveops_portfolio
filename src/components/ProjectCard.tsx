@@ -9,7 +9,7 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, index }: ProjectCardProps) {
-  // Format clean display URL (e.g., ymta-dental-clinic-demo.vercel.app)
+  // Format clean display URL (e.g., ymta-dental-clinic.vercel.app)
   const displayUrl = project.url.replace(/^https?:\/\//, '').replace(/\/$/, '');
 
   return (
@@ -38,7 +38,21 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 <span className="browser-dot dot-maximize" />
               </div>
               <div className="browser-address-container">
-                <span className="browser-ssl-lock">🔒</span>
+                <svg
+                  className="browser-ssl-lock"
+                  width="11"
+                  height="11"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                </svg>
                 <span className="browser-url-text">{displayUrl}</span>
               </div>
               <div className="browser-action-hint">
@@ -76,22 +90,6 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           <div className="project-info">
             <span className="project-category">{project.category}</span>
             <h3 className="project-title">{project.title}</h3>
-            <div className="project-description">
-              {project.description.split('\n').map((line, i) => (
-                <p key={i} className="project-meta-line">
-                  {line.split(/(\*\*.*?\*\*)/).map((part, j) => {
-                    if (part.startsWith('**') && part.endsWith('**')) {
-                      return (
-                        <strong key={j} className="project-meta-label">
-                          {part.slice(2, -2)}
-                        </strong>
-                      );
-                    }
-                    return part;
-                  })}
-                </p>
-              ))}
-            </div>
           </div>
         </a>
       </article>
