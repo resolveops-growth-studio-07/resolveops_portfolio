@@ -44,8 +44,8 @@
 
 .footer-top {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1.2fr 1.3fr;
-  gap: var(--space-3xl);
+  grid-template-columns: 1.4fr 0.85fr 1.15fr 1.6fr;
+  gap: clamp(var(--space-xl), 2.5vw, var(--space-3xl));
   padding-bottom: var(--space-2xl);
 }
 
@@ -144,14 +144,19 @@
 
 .footer-email {
   display: inline-flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.6rem;
   font-size: var(--text-sm);
   color: var(--text-secondary);
   text-decoration: none;
   transition: color var(--duration-fast) var(--ease-out);
-  word-break: break-all;
+  white-space: nowrap;
   line-height: 1.5;
+}
+
+.footer-email svg {
+  flex-shrink: 0;
+  margin-top: 2.5px;
 }
 
 .footer-email:hover {
@@ -231,6 +236,12 @@
     gap: var(--space-xl);
   }
 
+  .footer-email {
+    white-space: normal;
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+
   .footer-bottom {
     flex-direction: column;
     gap: var(--space-md);
@@ -240,5 +251,20 @@
   .footer-watermark {
     font-size: clamp(38px, 11vw, 70px);
     bottom: 12px;
+  }
+}
+
+@media (max-width: 375px) {
+  .site-footer {
+    padding-top: 32px;
+    padding-bottom: 20px;
+  }
+
+  .footer-logo-name {
+    font-size: 1.15rem;
+  }
+
+  .footer-watermark {
+    font-size: clamp(30px, 10vw, 54px);
   }
 }

@@ -834,8 +834,37 @@
 }
 
 @media (max-width: 480px) {
+  .services-hero {
+    padding-top: calc(var(--nav-height) + var(--space-lg));
+    padding-bottom: var(--space-xl);
+  }
+
+  .services-hero-title {
+    font-size: clamp(2rem, 10vw, 2.8rem);
+  }
+
   .services-stat-value {
     font-size: var(--text-2xl);
+  }
+
+  .services-stats-bar {
+    flex-wrap: wrap;
+    gap: var(--space-lg);
+  }
+
+  .services-cta .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 375px) {
+  .services-hero-title {
+    font-size: clamp(1.8rem, 10vw, 2.4rem);
+  }
+
+  .service-block-layout {
+    gap: var(--space-xl);
   }
 }
 

@@ -402,6 +402,52 @@ ul, ol {
   }
 }
 
+/* ── Mobile Global Fixes ────────────────────────────── */
+
+@media (max-width: 768px) {
+  /* Prevent iOS from auto-zooming on input focus */
+  input,
+  textarea,
+  select {
+    font-size: max(16px, 1em);
+  }
+
+  /* Ensure images are never wider than their container */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Better tap targets on touch devices */
+  .btn,
+  .nav-link,
+  .footer-link,
+  .mobile-nav-link {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .nav-link {
+    padding: 0.5rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Tighter container on very small screens */
+  .container {
+    padding-left: clamp(16px, 4vw, 24px);
+    padding-right: clamp(16px, 4vw, 24px);
+  }
+}
+
+@media (max-width: 375px) {
+  .container {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
+
 /* ── Utility Classes ───────────────────────────────── */
 
 .text-accent { color: var(--accent); text-shadow: 0 0 16px rgba(245, 243, 255, 0.55), 0 0 32px rgba(233, 229, 255, 0.28); }

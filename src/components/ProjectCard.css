@@ -140,6 +140,9 @@
   object-fit: cover;
   object-position: top center;
   display: block;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   transition: transform 0.5s var(--spring-smooth);
 }
 

@@ -666,3 +666,28 @@
     border-radius: var(--radius-lg);
   }
 }
+
+@media (max-width: 375px) {
+  .contact-hero-title {
+    font-size: clamp(2rem, 9vw, 2.8rem);
+  }
+
+  .contact-form-container {
+    padding: 1rem 0.85rem;
+  }
+
+  .form-submit,
+  .form-copy {
+    padding: 14px 20px;
+    font-size: 0.9rem;
+  }
+
+  .contact-card {
+    padding: 1rem;
+  }
+
+  .contact-intents button {
+    font-size: 0.78rem;
+    padding: 0.55rem 0.9rem;
+  }
+}

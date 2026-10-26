@@ -105,6 +105,45 @@
 
 @media (max-width: 768px) {
   .work-hero {
-    padding-top: calc(var(--nav-height) + var(--space-2xl));
+    padding-top: calc(var(--nav-height) + var(--space-xl));
+    padding-bottom: var(--space-xl);
+  }
+
+  .work-hero-title {
+    font-size: clamp(2.4rem, 9vw, 3.5rem);
+  }
+
+  .work-hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .work-bottom-cta {
+    padding: clamp(60px, 8vw, 100px) 0;
+  }
+
+  .work-bottom-cta h2 {
+    font-size: clamp(1.8rem, 6vw, 2.6rem) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .work-hero {
+    padding-top: calc(var(--nav-height) + var(--space-lg));
+    padding-bottom: var(--space-lg);
+  }
+
+  .work-projects-grid {
+    gap: 20px;
+  }
+
+  .work-bottom-cta .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 375px) {
+  .work-hero-title {
+    font-size: clamp(2rem, 10vw, 2.8rem);
   }
 }

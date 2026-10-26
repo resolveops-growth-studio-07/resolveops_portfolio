@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ArrowUpRight } from '@phosphor-icons/react';
 import type { Project } from '../data/content';
 import Reveal from './Reveal';
@@ -11,6 +12,21 @@ interface ProjectCardProps {
 export default function ProjectCard({ project, index }: ProjectCardProps) {
   // Format clean display URL (e.g., ymta-dental-clinic-demo.vercel.app)
   const displayUrl = project.url.replace(/^https?:\/\//, '').replace(/\/$/, '');
+
+  const initialSrc = project.image.startsWith('http') || project.image.startsWith('data:')
+    ? project.image
+    : `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${project.image.replace(/^\//, '')}`;
+
+  const [currentSrc, setCurrentSrc] = useState(initialSrc);
+  const [hasError, setHasError] = useState(false);
+
+  const handleImageError = () => {
+    if (currentSrc.includes('/images/projects/')) {
+      setCurrentSrc(currentSrc.replace('/images/projects/', '/projects/'));
+    } else {
+      setHasError(true);
+    }
+  };
 
   return (
     <Reveal delay={index * 120} direction="up">
@@ -47,25 +63,21 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             </div>
 
             <div className="project-image-viewport">
-              <img
-                src={project.image}
-                alt={project.alt}
-                className="project-screenshot"
-                loading="lazy"
-                width="1440"
-                height="900"
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  target.style.display = 'none';
-                  const parent = target.parentElement;
-                  if (parent) {
-                    const fallback = document.createElement('div');
-                    fallback.className = 'project-fallback';
-                    fallback.innerHTML = `<span class="fallback-text">${project.title}</span>`;
-                    parent.appendChild(fallback);
-                  }
-                }}
-              />
+              {!hasError ? (
+                <img
+                  src={currentSrc}
+                  alt={project.alt}
+                  className="project-screenshot"
+                  loading="lazy"
+                  width="1440"
+                  height="900"
+                  onError={handleImageError}
+                />
+              ) : (
+                <div className="project-fallback">
+                  <span className="fallback-text">{project.title}</span>
+                </div>
+              )}
               <div className="project-hover-pill">
                 <span>{project.urlLabel}</span>
                 <ArrowUpRight size={14} weight="bold" />
