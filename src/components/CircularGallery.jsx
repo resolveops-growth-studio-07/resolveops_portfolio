@@ -75,6 +75,7 @@ class Media {
         uniform vec2 uPlaneSizes;
         uniform sampler2D tMap;
         uniform float uBorderRadius;
+        uniform float uHover;
         varying vec2 vUv;
         
         float roundedBoxSDF(vec2 p, vec2 b, float r) {
@@ -99,6 +100,13 @@ class Media {
           float edgeSmooth = 0.002;
           float alpha = 1.0 - smoothstep(-edgeSmooth, edgeSmooth, d);
           
+          // Subtle, refined violet rim illumination with #A78BFA and #29134D
+          float rim = smoothstep(0.045, 0.0, abs(d));
+          vec3 accentViolet = vec3(0.655, 0.545, 0.980); // #A78BFA
+          vec3 deepGlow = vec3(0.25, 0.12, 0.48);        // #29134D-tinted glow
+          vec3 rimColor = mix(deepGlow, accentViolet, 0.5 + uHover * 0.35);
+          color.rgb += rimColor * rim * (0.22 + uHover * 0.38);
+          
           gl_FragColor = vec4(color.rgb, alpha);
         }
       `,
@@ -108,7 +116,8 @@ class Media {
         uImageSizes: { value: [0, 0] },
         uSpeed: { value: 0 },
         uTime: { value: 100 * Math.random() },
-        uBorderRadius: { value: this.borderRadius }
+        uBorderRadius: { value: this.borderRadius },
+        uHover: { value: 0 }
       },
       transparent: true
     });
@@ -129,7 +138,7 @@ class Media {
     });
     this.plane.setParent(this.scene);
   }
-  update(scroll, direction) {
+  update(scroll, direction, hoverAmount = 0) {
     this.plane.position.x = this.x - scroll.current - this.extra;
 
     const x = this.plane.position.x;
@@ -151,6 +160,31 @@ class Media {
         this.plane.position.y = arc;
         this.plane.rotation.z = Math.sign(x) * Math.asin(effectiveX / R);
       }
+    }
+
+    // A. Subtle, organic floating motion: each card drifts independently with gentle timing
+    const t = performance.now() * 0.001;
+    const floatSpeed = 0.55;
+    const floatY = Math.sin(t * floatSpeed + this.index * 1.35) * 0.14 + Math.cos(t * floatSpeed * 0.65 + this.index * 0.95) * 0.08;
+    const floatRot = Math.sin(t * floatSpeed * 0.75 + this.index * 1.1) * 0.012;
+    this.plane.position.y += floatY;
+    this.plane.rotation.z += floatRot;
+
+    // B. Depth & dimension: Central card sits slightly more prominent without size change; side cards recede with depth
+    const distFromCenter = Math.abs(x);
+    const centerFactor = Math.max(0, 1.0 - distFromCenter / (this.width * 1.3));
+    this.plane.position.z = centerFactor * 0.75;
+
+    // D. Smooth hover interactions: gentle elevation & depth boost
+    const isCenter = distFromCenter < this.width * 0.55;
+    const centerWeight = isCenter ? Math.cos((distFromCenter / (this.width * 0.55)) * (Math.PI / 2)) : 0;
+    const cardHover = hoverAmount * centerWeight;
+
+    this.plane.position.y += cardHover * 0.42;
+    this.plane.position.z += cardHover * 0.65;
+
+    if (this.program.uniforms.uHover) {
+      this.program.uniforms.uHover.value = cardHover;
     }
 
     this.speed = scroll.current - scroll.last;
@@ -206,6 +240,7 @@ class App {
     this.container = container;
     this.scrollSpeed = scrollSpeed;
     this.scroll = { ease: scrollEase, current: 0, target: 0, last: 0 };
+    this.hover = { current: 0, target: 0 };
     this.onCheckDebounce = () => { clearTimeout(this.checkTimer); this.checkTimer = setTimeout(() => this.onCheck(), 150); };
     this.createRenderer();
     this.createCamera();
@@ -356,15 +391,20 @@ class App {
     if(this.destroyed) return;
     if(document.hidden || this.visible === false) { this.raf=requestAnimationFrame(()=>this.update()); return; }
     this.scroll.current = lerp(this.scroll.current, this.scroll.target, this.scroll.ease);
+    this.hover.current = lerp(this.hover.current, this.hover.target, 0.08);
     const direction = this.scroll.current > this.scroll.last ? 'right' : 'left';
     if (this.medias) {
-      this.medias.forEach(media => media.update(this.scroll, direction));
+      this.medias.forEach(media => media.update(this.scroll, direction, this.hover.current));
     }
     this.renderer.render({ scene: this.scene, camera: this.camera });
     this.scroll.last = this.scroll.current;
     this.raf = window.requestAnimationFrame(this.update.bind(this));
   }
   addEventListeners() {
+    this.onPointerEnter = () => { this.hover.target = 1; };
+    this.onPointerLeave = () => { this.hover.target = 0; };
+    this.container.addEventListener('pointerenter', this.onPointerEnter);
+    this.container.addEventListener('pointerleave', this.onPointerLeave);
     this.handlers = { pointerdown:this.onTouchDown.bind(this), pointermove:this.onTouchMove.bind(this), pointerup:this.onTouchUp.bind(this), pointercancel:this.onTouchUp.bind(this), wheel:this.onWheel.bind(this), keydown:this.onKeyDown.bind(this) };
     Object.entries(this.handlers).forEach(([name,fn])=>this.container.addEventListener(name,fn,{passive:name!=='wheel' && name!=='keydown'}));
     this.resizeObserver=new ResizeObserver(()=>this.onResize()); this.resizeObserver.observe(this.container);
@@ -372,6 +412,8 @@ class App {
   }
   destroy() {
     this.destroyed=true; cancelAnimationFrame(this.raf); clearTimeout(this.checkTimer);
+    this.container.removeEventListener('pointerenter', this.onPointerEnter);
+    this.container.removeEventListener('pointerleave', this.onPointerLeave);
     Object.entries(this.handlers || {}).forEach(([name,fn])=>this.container.removeEventListener(name,fn));
     this.resizeObserver?.disconnect(); this.observer?.disconnect();
     this.medias?.forEach(m=>{m.disposed=true;m.imageElement.onload=null;m.program.uniforms.tMap.value.image=null;});

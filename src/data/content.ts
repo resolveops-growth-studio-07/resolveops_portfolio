@@ -197,14 +197,14 @@ export const services: Service[] = [
 // ── Projects ──────────────────────────────────────
 
 export const projects: Project[] = [
-{
+  {
     id: 'ymta-dental',
     title: 'YMTA Dental Clinic',
     category: 'Website Development',
     description:
       '**Status:** Project showcase\n**Objective:** Present treatments and clinic information clearly to prospective patients.\n**Constraints:** Required a fast, mobile-friendly design reflecting a professional healthcare environment.\n**Contribution:** Full design and development.\n**Features:** Interactive treatment sections, responsive layouts, and direct appointment enquiry pathways.\n**Outcome:** A professional web presence built for patient conversion.',
     url: 'https://ymta-dental-clinic.vercel.app/',
-    urlLabel: 'View project showcase',
+    urlLabel: 'View live website',
     image: '/projects/ymta-real.png',
     alt: 'YMTA Dental Clinic live website homepage showing dental treatments and appointment booking in Coimbatore',
   },
@@ -224,11 +224,11 @@ export const projects: Project[] = [
     title: 'Maruthi Fitness',
     category: 'Website Development',
     description:
-      '**Status:** Delivered\n**Objective:** Build a high-impact, modern digital presence for a gym, CrossFit, and functional training studio in Coimbatore.\n**Constraints:** Required fast loading speeds, visual program highlights, and direct membership conversion paths.\n**Contribution:** Full design and development.\n**Features:** Interactive workout programs, facility equipment showcase, trainer profiles, and direct enquiry pathways.\n**Outcome:** A high-impact, mobile-optimized website that drives fitness membership inquiries.',
+      '**Status:** Delivered\n**Objective:** Build a high-energy, modern digital presence for a premier CrossFit and functional training facility in Coimbatore.\n**Constraints:** Required a fast, bold aesthetic with cinematic motion that communicates elite training standards across mobile and desktop.\n**Contribution:** Studio collaboration & showcase (Developed by teammate Mohana Sundaram).\n**Features:** Dynamic hero typography, interactive training explorer, live rating counters, facility gallery, and direct WhatsApp enquiry pathways.\n**Outcome:** A high-converting web presence built to attract fitness enthusiasts and drive membership enquiries.',
     url: 'https://maruthi-fitness.vercel.app/',
     urlLabel: 'View live website',
     image: '/projects/maruthi-real.png',
-    alt: 'Maruthi Fitness live website homepage showcasing gym facilities, CrossFit, and personal training in Coimbatore',
+    alt: 'Maruthi Fitness live website homepage showing CrossFit training facility and membership enquiry in Coimbatore',
   },
 ];
 
@@ -271,9 +271,9 @@ export const processSteps: ProcessStep[] = [
 
 export const budgetOptions = [
   'Under ₹10,000',
-  '₹10,000 — ₹25,000',
-  '₹25,000 — ₹50,000',
-  '₹50,000 — ₹1,00,000',
+  '₹10,000 – ₹25,000',
+  '₹25,000 – ₹50,000',
+  '₹50,000 – ₹1,00,000',
   'Above ₹1,00,000',
   'Not sure yet',
 ] as const;

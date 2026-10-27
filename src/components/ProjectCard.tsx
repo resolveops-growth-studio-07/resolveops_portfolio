@@ -12,7 +12,12 @@ interface ProjectCardProps {
 export default function ProjectCard({ project, index }: ProjectCardProps) {
   // Format clean display URL (e.g., ymta-dental-clinic.vercel.app)
   const displayUrl = project.url.replace(/^https?:\/\//, '').replace(/\/$/, '');
-  const [imgSrc, setImgSrc] = useState(project.image);
+
+  const initialSrc = project.image.startsWith('http') || project.image.startsWith('data:')
+    ? project.image
+    : `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${project.image.replace(/^\//, '')}`;
+
+  const [imgSrc, setImgSrc] = useState(initialSrc);
   const [hasError, setHasError] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
@@ -24,7 +29,10 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
   }, [imgSrc]);
 
   const handleImageError = () => {
-    // If primary real screenshot failed, try static fallback screenshot
+    if (imgSrc.includes('/images/projects/')) {
+      setImgSrc(imgSrc.replace('/images/projects/', '/projects/'));
+      return;
+    }
     const fallback = project.imageFallback || (
       project.id === 'ymta-dental' ? '/projects/ymta-dental.png' :
       project.id === 'sindhus-dental' ? '/projects/sindhus-dental.png' :

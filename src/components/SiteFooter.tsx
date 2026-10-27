@@ -1,4 +1,4 @@
-﻿import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ArrowUp, EnvelopeSimple, InstagramLogo } from '@phosphor-icons/react';
 import { brand, navigation, projects } from '../data/content';
 import Reveal from './Reveal';
@@ -76,7 +76,16 @@ export default function SiteFooter() {
                 <li>
                   <a href={`mailto:${brand.email}`} className="footer-email">
                     <EnvelopeSimple size={16} weight="bold" />
-                    <span>{brand.email}</span>
+                    <span>
+                      {brand.email.includes('@') ? (
+                        <>
+                          {brand.email.split('@')[0]}
+                          <wbr />@{brand.email.split('@')[1]}
+                        </>
+                      ) : (
+                        brand.email
+                      )}
+                    </span>
                   </a>
                 </li>
                 <li>
